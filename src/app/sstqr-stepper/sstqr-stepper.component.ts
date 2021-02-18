@@ -33,18 +33,18 @@ export class SstqrStepperComponent implements OnInit {
       tankState: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      openingTankLevel: ['', Validators.required],
-      openingStocksMtons: ['', [Validators.required]],
-      openingStocksLtr: ['', [Validators.required]],
-      volumeRecMtons: ['', [Validators.required]],
-      volumeRecLtr: ['', [Validators.required]],
+      freeWatermetres : ['', Validators.required],
+      totalObservedcubic   : ['', [Validators.required]],
+      freeWatercubic : ['', [Validators.required]],
+      roofCorrncubic : ['', [Validators.required]],
+      grossObservedcubic : ['', [Validators.required]],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      volumneLiftedMtons: ['', Validators.required],
-      volumneLiftedLtrs: ['', Validators.required],
-      closingTankMM: ['', Validators.required],
-      closingStockMtons: ['', Validators.required],
-      closingStockLts: ['', Validators.required],
+      tempC: ['', Validators.required],
+      densityC: ['', Validators.required],
+      vcfAstm: ['', Validators.required],
+      grossStandardcu: ['', Validators.required],
+      grosstonnage: ['', Validators.required],
     });
   }
 
