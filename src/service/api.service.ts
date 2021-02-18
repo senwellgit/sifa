@@ -31,7 +31,7 @@ export class ApiService {
     private loading: LoaderProvider,
     private http: HTTP,
     private httpClient: HttpClient
-  ) {}
+  ) { }
 
   login(userName: string, password: string) {
     if (!ApiService.isCordova) {
@@ -142,6 +142,7 @@ export class ApiService {
   }
 
   saveDailyReport(dsr) {
+    debugger
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-daily-reports',
 
@@ -167,35 +168,65 @@ export class ApiService {
         Authorization: `Bearer ${ApiService.Token}`,
       }
     );
+
   }
 
   saveSSTQR(sstqr: any) {
     debugger
+    if (!ApiService.isCordova) {
+      return new Promise((resolve, rejects) => {
+        this.httpClient.post(
+          'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
+
+          {
+
+            "tank_id": sstqr.id,
+            "state": 0,
+            "innage_or_ullage_meter_ft": sstqr.innageMetres,
+            "free_water_meter_ft": sstqr.freeWatermetres,
+            "total_observed_cubic_meter": sstqr.totalObservedcubic,
+            "free_water_cubic_meter": sstqr.freeWatercubic,
+            "roof_corr_cubic_meter": sstqr.roofCorrncubic,
+            "gross_observed_cubic_meter": sstqr.grossObservedcubic,
+            "temperature_deg_c": sstqr.tempC,
+            "density": sstqr.densityC,
+            "v_c_f_astm54_b": sstqr.vcfAstm,
+            "gross_standard_cu_meters": sstqr.grossStandardcu,
+            "gross_tonnage_mega_ton": sstqr.grosstonnage
+          },
+
+        ).pipe(
+          map((resTank: any) => {
+            debugger;
+            resTank.data = JSON.stringify(resTank);
+            resolve(resTank);
+          })
+        ).subscribe();
+      })
+    }
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
       {
-        date_collected: new Date().toDateString(),
-        tank_id: sstqr.id,
-        state: '0',
-        opening_tank_level_mm: '',
-        opening_stock_mega_ton: '',
-        opening_stock_liter: '',
-        volume_received_mega_ton: '',
-        volume_received_liter: '',
-        h20_liter: '',
-        volume_lifted_mega_ton: '',
-        volume_lifted_liter: '',
-        closing_tank_level_mm: '',
-        closing_stock_mega_ton: '',
-        closing_stock_liter: '',
-        dead_stock_liter: '',
-        drop_in_line_liter: '',
-        drop_in_line_mm: '',
+
+        "tank_id": sstqr.id,
+        "state": 0,
+        "innage_or_ullage_meter_ft": sstqr.innageMetres,
+        "free_water_meter_ft": sstqr.freeWatermetres,
+        "total_observed_cubic_meter": sstqr.totalObservedcubic,
+        "free_water_cubic_meter": sstqr.freeWatercubic,
+        "roof_corr_cubic_meter": sstqr.roofCorrncubic,
+        "gross_observed_cubic_meter": sstqr.grossObservedcubic,
+        "temperature_deg_c": sstqr.tempC,
+        "density": sstqr.densityC,
+        "v_c_f_astm54_b": sstqr.vcfAstm,
+        "gross_standard_cu_meters": sstqr.grossStandardcu,
+        "gross_tonnage_mega_ton": sstqr.grosstonnage
       },
       {
         Authorization: `Bearer ${ApiService.Token}`,
       }
     );
   }
+
 }
