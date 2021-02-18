@@ -71,7 +71,7 @@
               </div>
 
               <div class="stepper-btn">
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
               </div>
             </form>
           </mat-step>
@@ -97,7 +97,7 @@
               <mat-form-field>
                 <mat-label>Opening Stock(M/TONS)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   required
                   formControlName="openingStocksMtons"
@@ -107,7 +107,7 @@
               <mat-form-field>
                 <mat-label>Opening Stock(Liters)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="openingStocksLtr"
                   required
@@ -117,7 +117,7 @@
               <mat-form-field>
                 <mat-label>Volume Received(M/TONS)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="volumeRecMtons"
                   required
@@ -126,7 +126,7 @@
               <mat-form-field>
                 <mat-label>Volume Received(Liters)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="volumeRecLtr"
                   required
@@ -134,7 +134,7 @@
               </mat-form-field>
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
               </div>
             </form>
           </mat-step>
@@ -144,7 +144,7 @@
               <mat-form-field>
                 <mat-label>Volume Lifted(M/TONS)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="volumneLiftedMtons"
                   required
@@ -154,7 +154,7 @@
               <mat-form-field>
                 <mat-label>Volume Lifted(Liters)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   required
                   formControlName="volumneLiftedLtrs"
@@ -164,7 +164,7 @@
               <mat-form-field>
                 <mat-label>Closing Tank Level(mm)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="closingTankMM"
                   required
@@ -174,7 +174,7 @@
               <mat-form-field>
                 <mat-label>Closing Stock(M/TONS)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="closingStockMtons"
                   required
@@ -183,7 +183,7 @@
               <mat-form-field>
                 <mat-label>Closing Stock(Liters)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="closingStockLts"
                   required
@@ -191,7 +191,7 @@
               </mat-form-field>
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext [disabled]="thirdFormGroup.invalid">Next</button>
               </div>
             </form>
           </mat-step>
@@ -204,7 +204,7 @@
               <mat-form-field>
                 <mat-label>Dead Stock(Liters)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="deadStock"
                   required
@@ -214,7 +214,7 @@
               <mat-form-field>
                 <mat-label>Drop In Line(Liters)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="dropInLineLtr"
                   required
@@ -224,7 +224,7 @@
               <mat-form-field>
                 <mat-label>Drop In Line(mm)</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="dropInLineMM"
                   required
@@ -233,7 +233,7 @@
               <mat-form-field>
                 <mat-label>Water</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   matInput
                   formControlName="water"
                   required
@@ -241,7 +241,7 @@
               </mat-form-field>
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext [disabled]="fourthFormGroup.invalid">Next</button>
               </div>
             </form>
           </mat-step>
@@ -249,35 +249,35 @@
             <!-- <ng-template matStepLabel>Done</ng-template> -->
             <div class="list">
               <span><b>Opening Tank Level</b></span>
-              <span>{{ secondFormGroup.get("openingTankLevel").value }}</span>
+              <span>{{ secondFormGroup.get("openingTankLevel").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Opening Stocks Mtons</b></span>
-              <span>{{ secondFormGroup.get("openingStocksMtons").value }}</span>
+              <span>{{ secondFormGroup.get("openingStocksMtons").value | number }}</span>
             </div>
             <div class="list">
               <span><b>Opening Stocks Ltr</b></span>
-              <span>{{ secondFormGroup.get("openingStocksLtr").value }}</span>
+              <span>{{ secondFormGroup.get("openingStocksLtr").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Volume Rec Mtons</b></span>
-              <span>{{ secondFormGroup.get("volumeRecMtons").value }}</span>
+              <span>{{ secondFormGroup.get("volumeRecMtons").value | number }}</span>
             </div>
             <div class="list">
               <span><b>Volume Rec Ltr</b></span>
-              <span>{{ secondFormGroup.get("volumeRecLtr").value }}</span>
+              <span>{{ secondFormGroup.get("volumeRecLtr").value | number }}</span>
             </div>
             <div class="list">
               <span><b>Volumne Lifted Mtons</b></span>
-              <span>{{ thirdFormGroup.get("volumneLiftedMtons").value }}</span>
+              <span>{{ thirdFormGroup.get("volumneLiftedMtons").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Volumne Lifted Ltr</b></span>
-              <span>{{ thirdFormGroup.get("volumneLiftedLtrs").value }}</span>
+              <span>{{ thirdFormGroup.get("volumneLiftedLtrs").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Closing Tank (mm)</b></span>
-              <span>{{ thirdFormGroup.get("closingTankMM").value }}</span>
+              <span>{{ thirdFormGroup.get("closingTankMM").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Closing Stock Mtons</b></span>
@@ -285,23 +285,23 @@
             </div>
             <div class="list">
               <span><b>Closing Stock Ltr</b></span>
-              <span>{{ thirdFormGroup.get("closingStockLts").value }}</span>
+              <span>{{ thirdFormGroup.get("closingStockLts").value | number }}</span>
             </div>
             <div class="list">
               <span><b>Dead Stock</b></span>
-              <span>{{ fourthFormGroup.get("deadStock").value }}</span>
+              <span>{{ fourthFormGroup.get("deadStock").value | number }}</span>
             </div>
             <div class="list">
               <span><b>Drop In Line Ltr</b></span>
-              <span>{{ fourthFormGroup.get("dropInLineLtr").value }}</span>
+              <span>{{ fourthFormGroup.get("dropInLineLtr").value  | number}}</span>
             </div>
             <div class="list">
               <span><b>Drop In Line (mm)</b></span>
-              <span>{{ fourthFormGroup.get("dropInLineMM").value }}</span>
+              <span>{{ fourthFormGroup.get("dropInLineMM").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Water (H2O)</b></span>
-              <span>{{ fourthFormGroup.get("water").value }}</span>
+              <span>{{ fourthFormGroup.get("water").value | number }}</span>
             </div>
 
             <div style="display: flex">

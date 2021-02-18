@@ -23,12 +23,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { InterceptorService } from 'src/service/interceptor.service';
 import { HTTP } from '@ionic-native/http/ngx';
 import { NumberPipePipe } from './number-pipe.pipe';
+import { SstqrStepperComponent } from './sstqr-stepper/sstqr-stepper.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SurveyorDashboardComponent,
     SdrStepperComponent,
+    SstqrStepperComponent,
     NumberPipePipe,
   ],
   entryComponents: [],

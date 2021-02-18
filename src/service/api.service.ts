@@ -102,6 +102,7 @@ export class ApiService {
           .subscribe();
       }).then((data) => {
         debugger;
+        this.loading.hideLoader();
         console.log('logged');
       });
     }

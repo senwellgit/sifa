@@ -18,7 +18,6 @@ export class SstqrStepperComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
-  fourthFormGroup: FormGroup;
   isLinear = true;
 
   filteredTanks$ = of(['Open', 'Close']);
@@ -47,20 +46,11 @@ export class SstqrStepperComponent implements OnInit {
       closingStockMtons: ['', Validators.required],
       closingStockLts: ['', Validators.required],
     });
-    this.fourthFormGroup = this._formBuilder.group({
-      deadStock: ['', Validators.required],
-      dropInLineLtr: ['', Validators.required],
-      dropInLineMM: ['', Validators.required],
-      water: ['', Validators.required],
-    });
   }
 
   ngOnInit() {
-    this.apiService.depot$.subscribe((data) => {
-      this.firstFormGroup.controls.depot.patchValue(data[0].city);
-    });
 
-    this.firstFormGroup.get('tank').valueChanges.pipe(
+    this.firstFormGroup.get('tankState').valueChanges.pipe(
       startWith(''),
       map((value) => {
         this.apiService.filterTanks(value);
@@ -70,7 +60,7 @@ export class SstqrStepperComponent implements OnInit {
 
   onTankChange(value: string, allTanks: any[]) {
     this.selectedTank = allTanks.find(
-      (t) => t.tank_label.toLowerCase() === value.toLowerCase()
+      (t) => t.tank_label === value
     );
   }
 
@@ -85,8 +75,7 @@ export class SstqrStepperComponent implements OnInit {
         ...this.firstFormGroup.value,
         ...this.secondFormGroup.value,
         ...this.thirdFormGroup.value,
-        ...this.fourthFormGroup.value,
-        ...this.selectedTank,
+        // ...this.selectedTank,
       })
       .then((res: any) => {
         this.loading.hideLoader();
