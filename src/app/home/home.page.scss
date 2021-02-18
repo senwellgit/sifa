@@ -1,0 +1,287 @@
+.login-text {
+  font-size: 3.94vh;
+  margin: 1vh 0 4vh 0;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.main-logo {
+  height: 16vh;
+}
+
+.signup-wrap {
+  height: 100%;
+  background-image: linear-gradient(35deg, #382f8c, #382f8c, #68b6f3);
+  overflow-y: auto;
+  padding: 0px 2.7vh;
+}
+
+.login-text-position {
+  text-align: center;
+}
+
+.signUp-content {
+  background: #3f308d;
+  --background: #40338f;
+  --keyboard-offset: 0px !important;
+  overflow-y: scroll;
+}
+
+.back {
+  font-size: 22px;
+  color: #ffffff;
+  margin-top: 35px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 30px;
+}
+
+/* Login phone number field */
+
+.login-phone-number {
+  width: 100%;
+  
+  border: none;
+  font-size: 2.5vh;
+  padding-right: 6px;
+  padding: 1.2vh 0;
+}
+
+@media (min-width: 1500px) {
+  .login-phone-number {
+    width: 94%;
+  }
+  .password-alignment {
+    margin-right: 20.5vh;
+  }
+}
+
+input::placeholder {
+  text-align: left;
+  font-size: 2vh !important;
+  
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #9c9eb9;
+}
+
+ion-input {
+  --placeholder-text-align: left;
+  --placeholder-font-size: 2vh !important;
+  --placeholder-font-weight: normal;
+  --placeholder-font-stretch: normal;
+  --placeholder-font-style: normal;
+  --placeholder-line-height: 1.5vh;
+  --placeholder-letter-spacing: normal;
+  --placeholder-color: #9c9eb9;
+}
+
+.login-phone-number:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  text-align: left;
+}
+
+.signupfield {
+  text-align: center;
+  padding-left: 16.5vw !important;
+  .native-input {
+    height: 58px;
+    padding-right: 0.7vh !important;
+    text-align: center !important;
+  }
+}
+
+.login-form {
+  ion-item {
+    margin: 1.1vh 0;
+    border-radius: 1.84vh;
+    border: 2px solid #ffffff00;
+    --padding-start: 5.33vw;
+  }
+}
+
+.iti__selected-flag {
+  padding: 0 !important;
+}
+
+.lost-password {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.88;
+  letter-spacing: normal;
+  color: #ffffff;
+  text-align: center;
+
+  font-size: 1.97vh;
+}
+
+.forget-pass-txt {
+  margin-top: 40px;
+}
+
+.image-aspect {
+  height: 10vh;
+}
+
+.avatar-center {
+  height: 10vh;
+  width: 9vh;
+}
+
+.text-link {
+  font-weight: 500;
+}
+
+.close-fab {
+  color: #ffffff;
+}
+
+.password-alignment {
+  width: 100% !important;
+  //font-size: 4vh;
+  text-align: left;
+  height: 7vh;
+}
+
+.password-spacing {
+  //letter-spacing: 7.64px;
+}
+
+.password-revealed,
+input {
+  font-size: 1.97vh;
+
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  font-size: 2.5vh;
+  line-height: 0.88;
+  letter-spacing: normal;
+  color: #2d3142;
+}
+
+.passwordIcon-alignment {
+  position: absolute !important;
+  right: 0;
+      
+  display: flex;
+  align-items: center;
+  height: 100%;
+  right: 1.8vh;
+  z-index: 3;
+}
+
+.social-login {
+  ion-row {
+    height: 7.14vh;
+    border-radius: 1.97vh;
+    padding-right: 2.46vh;
+  }
+
+  ion-row:nth-child(1) {
+    background-color: #4364a3;
+  }
+
+  ion-row:nth-child(2) {
+    background-color: #5b98f9;
+    margin-top: 1vh;
+    margin-bottom: 2.95vh;
+  }
+
+  ion-col {
+    padding: 0;
+  }
+  .social-text {
+    padding: 0;
+    display: flex;
+    h1 {
+      font-size: 1.97vh;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 0.88;
+      letter-spacing: 0.23px;
+      color: #ffffff;
+      margin: auto;
+      width: 100%;
+      text-align: left;
+      padding-left: 5.23vw;
+    }
+  }
+
+  .icon-wrapper {
+    text-align: right;
+    .social-icon {
+      height: 7vh;
+      width: 7vh;
+      object-fit: contain;
+      padding: 1vh 0 1vh 1vh;
+      border-radius: 5vh;
+    }
+  }
+}
+
+.action-btn-large {
+  margin-top: 2.46vh;
+  margin-bottom: 4.92vh;
+}
+
+.icon {
+  display: inline-block;
+  height: 2.3vh;
+  width: 2.3vh;
+  color: #e95b5b;
+  vertical-align: middle;
+}
+
+.text {
+  display: inline-block;
+  vertical-align: middle;
+
+  font-size: 1.7vh;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  margin-left: 1vh;
+  color: #e95b5b;
+}
+
+.errorContainer {
+  padding: 0.5vh 0px 1vh 1.47vh;
+}
+
+.invalid-field {
+  --background: #f4dcdc;
+  ::placeholder {
+    color: #e78383 !important;
+  }
+}
+
+input {
+  background-color: transparent;
+}
+.action-btn-large {
+  margin-top: 2.46vh;
+  margin-bottom: 4.92vh;
+}
+
+.password-reveal-icon {
+  height: 3.53vh;
+  margin-right: 1.58vw;
+}

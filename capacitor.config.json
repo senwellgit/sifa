@@ -1,0 +1,22 @@
+{
+  "appId": "sifa.com.app",
+  "appName": "SIFA",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000
+    }
+  },
+  "server": {
+    "allowNavigation": [
+      "capacitor://localhost",
+      "ionic://localhost",
+      "http://localhost",
+      "http://localhost:8080",
+      "http://localhost:8100"
+    ]
+  }
+}

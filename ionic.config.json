@@ -1,0 +1,8 @@
+{
+  "name": "sifa",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,323 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="9">
+        <ion-icon (click)="goBack()" name="caret-back-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="3"> <span (click)="logout()">Logout</span></ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>
+          Dear {{ (loggedUser$ | async)?.data?.first_name }}, please fill the
+          required details
+        </h2>
+        <mat-horizontal-stepper
+          [linear]="isLinear"
+          #stepper
+          style="background-color: lightgray; border-radius: 10px"
+        >
+          <mat-step
+            [stepControl]="firstFormGroup"
+            errorMessage="Name is required."
+          >
+            <form [formGroup]="firstFormGroup">
+              <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+              <div>
+                <mat-form-field>
+                  <mat-label>Please select Depot</mat-label>
+                  <input
+                    type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    formControlName="depot"
+                  />
+                </mat-form-field>
+
+                <mat-form-field *ngIf="filteredTanks$ | async as filteredTanks">
+                  <mat-label>Please select Tank</mat-label>
+                  <input
+                    type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    formControlName="tank"
+                    [matAutocomplete]="auto"
+                  />
+                  <mat-autocomplete
+                    autoActiveFirstOption
+                    #auto="matAutocomplete"
+                    (optionSelected)="
+                      onTankChange($event.option.value, filteredTanks)
+                    "
+                  >
+                    <mat-option
+                      *ngFor="let option of filteredTanks"
+                      [value]="option.tank_label"
+                    >
+                      {{ option?.tank_label }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+                <mat-label style="font-size: 2.5vh"
+                  >Product: {{ selectedTank?.petroleum_product_name }}
+                </mat-label>
+              </div>
+
+              <div class="stepper-btn">
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step
+            [stepControl]="secondFormGroup"
+            errorMessage="Address is required."
+          >
+            <form [formGroup]="secondFormGroup">
+              <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+              <mat-form-field>
+                <mat-label>Opening Tank Level (mm)</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="openingTankLevel"
+                  required
+                  (change)="
+                    onInputChange($event, 'openingTankLevel', 'secondFormGroup')
+                  "
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Opening Stock(M/TONS)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  required
+                  formControlName="openingStocksMtons"
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Opening Stock(Liters)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="openingStocksLtr"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Volume Received(M/TONS)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="volumeRecMtons"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Volume Received(Liters)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="volumeRecLtr"
+                  required
+                />
+              </mat-form-field>
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="thirdFormGroup">
+            <form [formGroup]="thirdFormGroup">
+              <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+              <mat-form-field>
+                <mat-label>Volume Lifted(M/TONS)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="volumneLiftedMtons"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Volume Lifted(Liters)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  required
+                  formControlName="volumneLiftedLtrs"
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Closing Tank Level(mm)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="closingTankMM"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Closing Stock(M/TONS)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="closingStockMtons"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Closing Stock(Liters)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="closingStockLts"
+                  required
+                />
+              </mat-form-field>
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step
+            [stepControl]="fourthFormGroup"
+            errorMessage="Address is required."
+          >
+            <form [formGroup]="fourthFormGroup">
+              <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+              <mat-form-field>
+                <mat-label>Dead Stock(Liters)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="deadStock"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Drop In Line(Liters)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="dropInLineLtr"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Drop In Line(mm)</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="dropInLineMM"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Water</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="water"
+                  required
+                />
+              </mat-form-field>
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <!-- <ng-template matStepLabel>Done</ng-template> -->
+            <div class="list">
+              <span><b>Opening Tank Level</b></span>
+              <span>{{ secondFormGroup.get("openingTankLevel").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Opening Stocks Mtons</b></span>
+              <span>{{ secondFormGroup.get("openingStocksMtons").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Opening Stocks Ltr</b></span>
+              <span>{{ secondFormGroup.get("openingStocksLtr").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Volume Rec Mtons</b></span>
+              <span>{{ secondFormGroup.get("volumeRecMtons").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Volume Rec Ltr</b></span>
+              <span>{{ secondFormGroup.get("volumeRecLtr").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Volumne Lifted Mtons</b></span>
+              <span>{{ thirdFormGroup.get("volumneLiftedMtons").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Volumne Lifted Ltr</b></span>
+              <span>{{ thirdFormGroup.get("volumneLiftedLtrs").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Closing Tank (mm)</b></span>
+              <span>{{ thirdFormGroup.get("closingTankMM").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Closing Stock Mtons</b></span>
+              <span>{{ thirdFormGroup.get("closingStockMtons").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Closing Stock Ltr</b></span>
+              <span>{{ thirdFormGroup.get("closingStockLts").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Dead Stock</b></span>
+              <span>{{ fourthFormGroup.get("deadStock").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Drop In Line Ltr</b></span>
+              <span>{{ fourthFormGroup.get("dropInLineLtr").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Drop In Line (mm)</b></span>
+              <span>{{ fourthFormGroup.get("dropInLineMM").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Water (H2O)</b></span>
+              <span>{{ fourthFormGroup.get("water").value }}</span>
+            </div>
+
+            <div style="display: flex">
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+              </div>
+              <div class="stepper-btn">
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+              <div class="stepper-btn1" style="text-align: right; width: 100%">
+                <button mat-button (click)="saveDSR()">Save</button>
+              </div>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

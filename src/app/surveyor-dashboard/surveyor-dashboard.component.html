@@ -1,0 +1,39 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="9">
+        <span
+          >Welcome {{ (loggedUser$ | async)?.data?.first_name }}</span
+        ></ion-col
+      >
+      <ion-col size="3"> <span (click)="logout()">Logout</span></ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="signUp-content">
+  <div class="signup-wrap" lang="en">
+    <div style="padding: 1vh; margin-top: 2vh">
+      <div style="margin-bottom: 4vh">
+        <div class="login-text-position">
+          <img class="main-logo" src="assets/icon/main_icon.png" alt="logo" />
+        </div>
+      </div>
+    </div>
+    <div>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button size="full" shape="round" (click)="dsr()" class="button"
+            >DAILY SURVEYOR REPORT</ion-button
+          >
+
+          <ion-button size="full" shape="round" class="button" (click)="sstqr()"
+            >SURVEYOR SHORE TANK <br /> <br />
+            QUANTITY REPORT</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
+
+<!-- <ng-template *ngIf="depot$ | async"> </ng-template> -->

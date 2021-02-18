@@ -1,0 +1,63 @@
+.signup-wrap {
+  height: 100%;
+  //background-image: linear-gradient(35deg, #382f8c, #382f8c, #68b6f3);
+  background-color: lightgray;
+  overflow-y: auto;
+  padding: 0px 2.7vh;
+}
+
+.button {
+  margin-bottom: 3vh;
+  height: 8vh;
+  font-weight: 600;
+  font-size: 2ch;
+  --background: linear-gradient(
+    35deg,
+    rgba(141, 136, 235, 1) 0%,
+    rgba(71, 71, 243, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+ion-header {
+  ion-toolbar {
+    --background: linear-gradient(
+      35deg,
+      rgba(141, 136, 235, 1) 0%,
+      rgba(71, 71, 243, 1) 100%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    --padding-start: 5.866vw;
+    --padding-end: 5.866vw;
+    --padding-top: 1.847vh;
+    --padding-bottom: 1.231vh;
+    --border-color: transparent;
+    --color: white;
+
+    mat-icon {
+      font-size: 3.325vh;
+      height: 3.325vh;
+      width: 3.325vh;
+      color: #2d3142;
+      margin-bottom: 1.231vh;
+      margin-left: -0.533vw;
+    }
+
+    .page-back-icon {
+      height: 3.325vh;
+      width: 3.325vh;
+      margin-bottom: 1.231vh;
+      margin-left: -0.533vw;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3.694vh;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      color: #2d3142;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+<ion-content class="signUp-content">
+  <div class="signup-wrap" lang="en">
+    <div style="margin-top: 6vh">
+      <div style="margin-bottom: 4vh">
+        <div class="login-text-position">
+          <h3 class="ion-text-center login-text">
+            Welcome <br />
+            back
+          </h3>
+          <img class="main-logo" src="assets/icon/main_icon.png" alt="logo" />
+        </div>
+      </div>
+
+      <div>
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit(loginForm.value, loginForm.valid)"
+          class="signup-form-size"
+        >
+          <div class="login-form">
+            <ion-item
+              class="country-select ion-no-padding"
+              [ngClass]="loginForm.get('phoneNumber')?.errors?.incorrectPhoneNumber ? 'invalid-field': ''"
+              lines="none"
+            >
+              <input
+                type="text"
+                placeholder="Mobile or Email"
+                class="login-phone-number"
+                formControlName="phoneNumber"
+                #phoneNumber
+              />
+            </ion-item>
+
+            <div
+              class="errorContainer"
+              *ngIf="loginForm.get('phoneNumber')?.errors?.incorrectPhoneNumber"
+            >
+              <ion-icon name="warning" class="icon"></ion-icon>
+              <span *ngIf="phoneInValid" class="text"
+                >Please enter a valid mobile number</span
+              >
+              <span *ngIf="!phoneInValid" class="text"
+                >Please enter your mobile number</span
+              >
+            </div>
+
+            <ion-item
+              lines="none"
+              [ngClass]="loginForm.get('password').touched && loginForm.get('password')?.errors ? 'invalid-field': ''"
+              class="ion-no-padding"
+            >
+              <ion-input
+                [type]="passwordType"
+                clearOnEdit="false"
+                placeholder="Password"
+                formControlName="password"
+                class="password-alignment"
+                [ngClass]="(loginForm.get('password').value.length > 0 && passwordIcon === 'eye-off') ? 'password-spacing': 'password-revealed'"
+              ></ion-input>
+              <img
+                *ngIf="passwordIcon === 'eye-off'"
+                class="password-reveal-icon"
+                width="35"
+                height="35"
+                src="assets/icon/eye.svg"
+                (click)="toggleViewPassword()"
+                alt="eye"
+              />
+              <img
+                *ngIf="passwordIcon === 'eye'"
+                class="password-reveal-icon"
+                width="35"
+                height="35"
+                src="assets/icon/eye-off.svg"
+                (click)="toggleViewPassword()"
+                alt="eye-off"
+              />
+            </ion-item>
+          </div>
+
+          <div
+            class="errorContainer"
+            *ngIf="loginForm.get('password').touched && loginForm.get('password')?.errors?.required"
+          >
+            <ion-icon name="warning" class="icon"></ion-icon>
+            <span class="text">Please enter your password</span>
+          </div>
+          <div
+            class="errorContainer"
+            *ngIf="loginForm.get('password').touched && loginForm.get('password')?.errors?.minlength"
+          >
+            <ion-icon name="warning" class="icon"></ion-icon>
+            <span class="text">Please enter a valid password</span>
+          </div>
+
+          <ion-button expand="block" class="action-btn-large" style="height: 7vh;" type="submit"
+            >Let's Go!</ion-button
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
