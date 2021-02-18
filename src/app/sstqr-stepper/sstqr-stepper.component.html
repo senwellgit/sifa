@@ -20,42 +20,80 @@
           <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
             <form [formGroup]="firstFormGroup">
               <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+             
               <div>
+                <mat-form-field>
+                  <mat-label>Please select Depot</mat-label>
+                  <input
+                    type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    formControlName="depot"
+                  />
+                </mat-form-field>
+
                 <mat-form-field *ngIf="filteredTanks$ | async as filteredTanks">
-                  <mat-label>TANK(From tank DDL)</mat-label>
-                  <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="tankState"
-                    [matAutocomplete]="auto" />
-                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="
+                  <mat-label>Please select Tank</mat-label>
+                  <input
+                    type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    formControlName="tank"
+                    [matAutocomplete]="auto"
+                  />
+                  <mat-autocomplete
+                    autoActiveFirstOption
+                    #auto="matAutocomplete"
+                    (optionSelected)="
                       onTankChange($event.option.value, filteredTanks)
-                    ">
-                    <mat-option *ngFor="let option of filteredTanks" [value]="option">
-                      {{ option }}
+                    "
+                  >
+                    <mat-option
+                      *ngFor="let option of filteredTanks"
+                      [value]="option.tank_label"
+                    >
+                      {{ option?.tank_label }}
                     </mat-option>
                   </mat-autocomplete>
                 </mat-form-field>
               </div>
              
-              
+             
+             
               <div>
-                <mat-form-field >
-                  <mat-label>Innage/Ullage(metres/ft-ins)
-                  </mat-label>
-                  <textarea placeholder="Pick one" aria-label="Number" matInput formControlName="innageMetres" required>
-                    </textarea>
+                <mat-form-field *ngIf="filteredTanks$ | async as filteredTanks">
+                  <mat-label>Open Stock Value</mat-label>
+                  <input type="tel" placeholder="Pick one" aria-label="Number" matInput formControlName="tankState" />
                 </mat-form-field>
               </div>
-              
-              
-              
+
+
+
+
+
               <div class="stepper-btn">
                 <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
               </div>
             </form>
           </mat-step>
           <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-            <form [formGroup]="secondFormGroup"> 
+            <form [formGroup]="secondFormGroup">
               <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
-           <mat-form-field>
+
+
+
+              <div>
+                <mat-form-field>
+                  <mat-label>Innage/Ullage(metres/ft-ins)
+                  </mat-label>
+                  <textarea rows="4" aria-label="Number" matInput formControlName="innageMetres" required>
+                    </textarea>
+                </mat-form-field>
+              </div>
+
+              <mat-form-field>
                 <mat-label>Free/Water (metres/ft-ins)</mat-label>
                 <input type="tel" matInput formControlName="freeWatermetres" required />
                 <!-- (change)="
@@ -70,7 +108,7 @@
 
               <mat-form-field>
                 <mat-label>Free Water(cubic metres)</mat-label>
-                
+
                 <input type="tel" matInput formControlName="freeWatercubic" required />
               </mat-form-field>
 
@@ -86,13 +124,13 @@
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
               </div>
-          
-          </form> 
+
+            </form>
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
-            <form [formGroup]="thirdFormGroup"> 
+            <form [formGroup]="thirdFormGroup">
               <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
-               <mat-form-field> 
+              <mat-form-field>
                 <mat-label>Temp (*C)</mat-label>
                 <input type="tel" matInput formControlName="tempC" required />
               </mat-form-field>
@@ -101,7 +139,7 @@
                 <mat-label>Density(@15*C)</mat-label>
                 <input type="tel" matInput required formControlName="densityC" />
               </mat-form-field>
-             
+
               <mat-form-field>
                 <mat-label>V.C.F ASTM54(B)</mat-label>
                 <input type="tel" matInput formControlName="vcfAstm" required />
@@ -125,12 +163,12 @@
             <!-- <ng-template matStepLabel>Done</ng-template> -->
             <div class="list">
               <span><b>Free/Water (metres/ft-ins)
-              </b></span>
-              <span>{{ secondFormGroup.get("freeWatermetres").value  | number}}</span>
+                </b></span>
+              <span>{{ secondFormGroup.get("freeWatermetres").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Total Observed(cubic metres)</b></span>
-              <span>{{ secondFormGroup.get("totalObservedcubic").value  | number}}</span>
+              <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
             </div>
             <div class="list">
               <span><b>Free Water(cubic metres)</b></span>
@@ -164,7 +202,7 @@
               <span><b>Gross Tonnage(M/tons in VAC)</b></span>
               <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
             </div>
-         
+
             <div style="display: flex">
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>

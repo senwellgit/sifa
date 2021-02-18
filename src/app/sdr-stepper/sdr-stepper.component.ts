@@ -56,7 +56,10 @@ export class SdrStepperComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.depot$.subscribe((data) => {
-      this.firstFormGroup.controls.depot.patchValue(data[0].city);
+      if (!data) {
+        return
+      }
+      this.firstFormGroup.controls.depot.patchValue(data[0].name);
     });
 
     this.firstFormGroup.get('tank').valueChanges.pipe(

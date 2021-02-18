@@ -13,14 +13,21 @@ import { LoaderProvider } from 'src/service/loaderProvider';
   styleUrls: ['./sstqr-stepper.component.scss'],
 })
 export class SstqrStepperComponent implements OnInit {
-  loggedUser$ = this.apiService.loggedInUserData$;
+  loggedUser$ = this.apiService.loggedInUserData$.pipe(
+    map((res) => {
+      if (!res) {
+        return '';
+      }
+      res = JSON.parse(res);
+      return res;
+    })
+  );
   isDisabled = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   isLinear = true;
-
-  filteredTanks$ = of(['Open', 'Close']);
+  filteredTanks$ = this.apiService.tanks$;
   selectedTank: any;
   constructor(
     private _formBuilder: FormBuilder,
@@ -31,14 +38,17 @@ export class SstqrStepperComponent implements OnInit {
   ) {
     this.firstFormGroup = this._formBuilder.group({
       tankState: ['', Validators.required],
-      innageMetres :['',Validators.required]
+      depot: [{ value: '', disabled: true }, Validators.required],
+      tank: ['', Validators.required]
+
     });
     this.secondFormGroup = this._formBuilder.group({
-      freeWatermetres : ['', Validators.required],
-      totalObservedcubic   : ['', [Validators.required]],
-      freeWatercubic : ['', [Validators.required]],
-      roofCorrncubic : ['', [Validators.required]],
-      grossObservedcubic : ['', [Validators.required]],
+      innageMetres: ['', Validators.required],
+      freeWatermetres: ['', Validators.required],
+      totalObservedcubic: ['', [Validators.required]],
+      freeWatercubic: ['', [Validators.required]],
+      roofCorrncubic: ['', [Validators.required]],
+      grossObservedcubic: ['', [Validators.required]],
     });
     this.thirdFormGroup = this._formBuilder.group({
       tempC: ['', Validators.required],
@@ -50,6 +60,14 @@ export class SstqrStepperComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.apiService.depot$.subscribe((data) => {
+      debugger
+      if (!data) {
+        return
+      }
+      this.firstFormGroup.controls.depot.patchValue(data[0].name);
+    });
 
     this.firstFormGroup.get('tankState').valueChanges.pipe(
       startWith(''),
