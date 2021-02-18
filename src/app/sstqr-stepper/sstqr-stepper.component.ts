@@ -39,8 +39,7 @@ export class SstqrStepperComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       tankState: ['', Validators.required],
       depot: [{ value: '', disabled: true }, Validators.required],
-      tank: ['', Validators.required]
-
+      tank: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       innageMetres: ['', Validators.required],
@@ -60,11 +59,10 @@ export class SstqrStepperComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.apiService.depot$.subscribe((data) => {
-      debugger
+      debugger;
       if (!data) {
-        return
+        return;
       }
       this.firstFormGroup.controls.depot.patchValue(data[0].name);
     });
@@ -78,9 +76,7 @@ export class SstqrStepperComponent implements OnInit {
   }
 
   onTankChange(value: string, allTanks: any[]) {
-    this.selectedTank = allTanks.find(
-      (t) => t.tank_label === value
-    );
+    this.selectedTank = allTanks.find((t) => t.tank_label === value);
   }
 
   goBack() {
@@ -89,28 +85,24 @@ export class SstqrStepperComponent implements OnInit {
 
   saveDSR() {
     this.loading.showLoader();
+    debugger;
     this.apiService
-      .saveDailyReport({
+      .saveSSTQR({
         ...this.firstFormGroup.value,
         ...this.secondFormGroup.value,
         ...this.thirdFormGroup.value,
-        // ...this.selectedTank,
+        ...this.selectedTank,
       })
       .then((res: any) => {
         this.loading.hideLoader();
 
         if (JSON.parse(res.data).status == 200) {
-          alert('Report has been submitted.');
+          alert('Shore Report has been submitted.');
           this.router.navigateByUrl('survayer-dashboard');
         } else {
           alert('Something went wrong.');
         }
       });
-  }
-
-  onInputChange(event, fcName, fName) {
-    const abc = this[fName].get(fcName).value;
-    this[fName].get(fcName).patchValue(abc.toLocaleString());
   }
 
   logout() {

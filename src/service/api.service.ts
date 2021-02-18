@@ -168,4 +168,34 @@ export class ApiService {
       }
     );
   }
+
+  saveSSTQR(sstqr: any) {
+    debugger
+    return this.http.post(
+      'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
+
+      {
+        date_collected: new Date().toDateString(),
+        tank_id: sstqr.id,
+        state: '0',
+        opening_tank_level_mm: '',
+        opening_stock_mega_ton: '',
+        opening_stock_liter: '',
+        volume_received_mega_ton: '',
+        volume_received_liter: '',
+        h20_liter: '',
+        volume_lifted_mega_ton: '',
+        volume_lifted_liter: '',
+        closing_tank_level_mm: '',
+        closing_stock_mega_ton: '',
+        closing_stock_liter: '',
+        dead_stock_liter: '',
+        drop_in_line_liter: '',
+        drop_in_line_mm: '',
+      },
+      {
+        Authorization: `Bearer ${ApiService.Token}`,
+      }
+    );
+  }
 }
