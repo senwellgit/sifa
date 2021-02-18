@@ -31,6 +31,7 @@ export class SstqrStepperComponent implements OnInit {
   ) {
     this.firstFormGroup = this._formBuilder.group({
       tankState: ['', Validators.required],
+      innageMetres :['',Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       freeWatermetres : ['', Validators.required],

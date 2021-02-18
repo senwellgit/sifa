@@ -22,7 +22,7 @@
               <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
               <div>
                 <mat-form-field *ngIf="filteredTanks$ | async as filteredTanks">
-                  <mat-label>From tank DDL</mat-label>
+                  <mat-label>TANK(From tank DDL)</mat-label>
                   <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="tankState"
                     [matAutocomplete]="auto" />
                   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="
@@ -34,7 +34,19 @@
                   </mat-autocomplete>
                 </mat-form-field>
               </div>
-
+             
+              
+              <div>
+                <mat-form-field >
+                  <mat-label>Innage/Ullage(metres/ft-ins)
+                  </mat-label>
+                  <textarea placeholder="Pick one" aria-label="Number" matInput formControlName="innageMetres" required>
+                    </textarea>
+                </mat-form-field>
+              </div>
+              
+              
+              
               <div class="stepper-btn">
                 <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
               </div>
@@ -112,44 +124,44 @@
           <mat-step>
             <!-- <ng-template matStepLabel>Done</ng-template> -->
             <div class="list">
-              <span><b>From tank DDL
+              <span><b>Free/Water (metres/ft-ins)
               </b></span>
               <span>{{ secondFormGroup.get("freeWatermetres").value  | number}}</span>
             </div>
             <div class="list">
-              <span><b>Free/Water (metres/ft-ins)</b></span>
+              <span><b>Total Observed(cubic metres)</b></span>
               <span>{{ secondFormGroup.get("totalObservedcubic").value  | number}}</span>
             </div>
             <div class="list">
-              <span><b>Total Observed(cubic metres)</b></span>
+              <span><b>Free Water(cubic metres)</b></span>
               <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
             </div>
             <div class="list">
-              <span><b>Volume Rec Mtons</b></span>
+              <span><b>Roof Corr'n(cubic metres)</b></span>
               <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
             </div>
             <div class="list">
-              <span><b>Volume Rec Ltr</b></span>
+              <span><b>Gross Observed(cubic metres)</b></span>
               <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
             </div>
             <div class="list">
-              <span><b>Volumne Lifted Mtons</b></span>
+              <span><b>Temp (*C)</b></span>
               <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
             </div>
             <div class="list">
-              <span><b>Volumne Lifted Ltr</b></span>
+              <span><b>Density(@15*C)</b></span>
               <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
             </div>
             <div class="list">
-              <span><b>Closing Tank (mm)</b></span>
+              <span><b>V.C.F ASTM54(B)</b></span>
               <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
             </div>
             <div class="list">
-              <span><b>Closing Stock Mtons</b></span>
+              <span><b>Gross Standard Cu(Metres @ 15 *C)</b></span>
               <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
             </div>
             <div class="list">
-              <span><b>Closing Stock Ltr</b></span>
+              <span><b>Gross Tonnage(M/tons in VAC)</b></span>
               <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
             </div>
          
