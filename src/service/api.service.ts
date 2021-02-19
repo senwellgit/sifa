@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { map, startWith, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { LoaderProvider } from './loaderProvider';
@@ -16,6 +16,7 @@ export class ApiService {
   updateFilterSearch$ = new ReplaySubject(1);
   static Token = '';
   static isCordova = false;
+  responsedata:any;
 
   filteredTank$ = this.updateFilterSearch$.pipe(
     withLatestFrom(this.tanks$),
@@ -171,14 +172,14 @@ export class ApiService {
 
   }
 
-  saveSSTQR(sstqr: any) {
+ saveSSTQR(sstqr: any) {
     debugger
     if (!ApiService.isCordova) {
       return new Promise((resolve, rejects) => {
         this.httpClient.post(
           'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
-          [{
+          {
 
             "tank_id": sstqr.id,
             "state": 0,
@@ -193,34 +194,20 @@ export class ApiService {
             "v_c_f_astm54_b": sstqr.vcfAstm,
             "gross_standard_cu_meters": sstqr.grossStandardcu,
             "gross_tonnage_mega_ton": sstqr.grosstonnage
-          },
-          {
-             "tank_id": sstqr.id,
-            "state": 1,
-            "innage_or_ullage_meter_ft": sstqr.closeinnageMetres,
-            "free_water_meter_ft": sstqr.closefreeWatermetres,
-            "total_observed_cubic_meter": sstqr.closetotalObservedcubic,
-            "free_water_cubic_meter": sstqr.closefreeWatercubic,
-            "roof_corr_cubic_meter": sstqr.closeroofCorrncubic,
-            "gross_observed_cubic_meter": sstqr.closegrossObservedcubic,
-            "temperature_deg_c": sstqr.closetempC,
-            "density": sstqr.closedensityC,
-            "v_c_f_astm54_b": sstqr.closevcfAstm,
-            "gross_standard_cu_meters": sstqr.closegrossStandardcu,
-            "gross_tonnage_mega_ton": sstqr.closegrosstonnage
-
           }
-          ]
 
         ).pipe(
           map((resTank: any) => {
             debugger;
             resTank.data = JSON.stringify(resTank);
             resolve(resTank);
+            this.responsedata=resTank.data;
+            debugger
           })
         ).subscribe();
       })
     }
+    debugger
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
@@ -243,7 +230,7 @@ export class ApiService {
       {
         Authorization: `Bearer ${ApiService.Token}`,
       }
-    );
+    )
   }
 
 }

@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ApiService } from 'src/service/api.service';
 import { LoaderProvider } from 'src/service/loaderProvider';
-
+import { MatStepper } from '@angular/material/stepper';
 @Component({
   selector: 'app-sstqr-stepper',
   templateUrl: './sstqr-stepper.component.html',
@@ -30,6 +30,8 @@ export class SstqrStepperComponent implements OnInit {
   isLinear = true;
   filteredTanks$ = this.apiService.tanks$;
   selectedTank: any;
+  sstqrresponse:any;
+  data:any;
   constructor(
     private _formBuilder: FormBuilder,
     private location: Location,
@@ -50,12 +52,7 @@ export class SstqrStepperComponent implements OnInit {
       freeWatercubic: ['', [Validators.required]],
       roofCorrncubic: ['', [Validators.required]],
       grossObservedcubic: ['', [Validators.required]],
-      closeinnageMetres: ['', Validators.required],
-      closefreeWatermetres: ['', Validators.required],
-      closetotalObservedcubic: ['', [Validators.required]],
-      closefreeWatercubic: ['', [Validators.required]],
-      closeroofCorrncubic: ['', [Validators.required]],
-      closegrossObservedcubic: ['', [Validators.required]]
+    
     });
     this.thirdFormGroup = this._formBuilder.group({
       tempC: ['', Validators.required],
@@ -63,11 +60,6 @@ export class SstqrStepperComponent implements OnInit {
       vcfAstm: ['', Validators.required],
       grossStandardcu: ['', Validators.required],
       grosstonnage: ['', Validators.required],
-      closetempC: ['', Validators.required],
-      closedensityC: ['', Validators.required],
-      closevcfAstm: ['', Validators.required],
-      closegrossStandardcu: ['', Validators.required],
-      closegrosstonnage: ['', Validators.required],
     });
   }
 
@@ -78,7 +70,9 @@ export class SstqrStepperComponent implements OnInit {
         return;
       }
       this.firstFormGroup.controls.depot.patchValue(data[0].name);
+     
     });
+    debugger
 
     this.firstFormGroup.get('tankState').valueChanges.pipe(
       startWith(''),
@@ -96,7 +90,7 @@ export class SstqrStepperComponent implements OnInit {
     this.location.back();
   }
 
-  saveDSR() {
+saveDSR(stepper:MatStepper) {
     this.loading.showLoader();
     debugger;
     this.apiService
@@ -110,8 +104,12 @@ export class SstqrStepperComponent implements OnInit {
         this.loading.hideLoader();
 
         if (JSON.parse(res.data).status == 200) {
+         debugger
           alert('Shore Report has been submitted.');
-          this.router.navigateByUrl('survayer-dashboard');
+          this.sstqrresponse=this.apiService.responsedata
+          debugger
+         /// stepper.next();
+         // this.router.navigateByUrl('survayer-dashboard');
         } else {
           alert('Something went wrong.');
         }

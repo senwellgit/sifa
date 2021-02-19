@@ -64,15 +64,11 @@
               <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
               <!-- <ion-row>                -->
               <!-- <ion-col size="6"> -->
-              <div style="display: flex;">
-                <div style="width: 50%;">
-                  <mat-label class="open">Open 
-                  </mat-label>
-                  <mat-form-field>
-                    <mat-label>Innage/Ullage(metres/ft-ins) </mat-label>
-                    <input type="tel" aria-label="Number" matInput formControlName="innageMetres" required>
+              <mat-form-field>
+                <mat-label>Innage/Ullage(metres/ft-ins) </mat-label>
+                <input type="tel" aria-label="Number" matInput formControlName="innageMetres" required>
 
-                  </mat-form-field>
+              </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Free/Water (metres/ft-ins)</mat-label>
@@ -101,55 +97,9 @@
                 <mat-label> Gross Observed(cubic metres)</mat-label>
                 <input type="tel" matInput formControlName="grossObservedcubic" required />
               </mat-form-field>
-              </div>
 
               <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
-              <div style="width: 50%;">
-                <mat-label class="open">Close 
-                  </mat-label>
-                <mat-form-field>
-                  <mat-label> Innage/Ullage(metres/ft-ins)
-                  </mat-label>
-                  <input type="tel" aria-label="Number" matInput formControlName="closeinnageMetres" required>
-                </mat-form-field>
-<!--                 
-                <mat-form-field>
-                  <mat-label>Close Innage/Ullage(metres/ft-ins)
-                  </mat-label>
-                  <input type="tel" aria-label="Number" matInput formControlName="closeinnageMetres" required>
 
-                </mat-form-field> --> 
-              
-
-              <mat-form-field>
-                <mat-label> Free/Water (metres/ft-ins)</mat-label>
-                <input type="tel" matInput formControlName="closefreeWatermetres" required />
-                <!-- (change)="
-                onInputChange($event, 'openingTankLevel', 'secondFormGroup')
-                  "  -->
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label> Total Observed(cubic metres)</mat-label>
-                <input type="tel" matInput required formControlName="closetotalObservedcubic" />
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label> Free Water(cubic metres)</mat-label>
-
-                <input type="tel" matInput formControlName="closefreeWatercubic" required />
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label> Roof Corr'n(cubic metres)</mat-label>
-                <input type="tel" matInput formControlName="closeroofCorrncubic" required />
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label> Gross Observed(cubic metres)</mat-label>
-                <input type="tel" matInput formControlName="closegrossObservedcubic" required />
-              </mat-form-field>
-              </div>
-            </div>
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
@@ -160,262 +110,232 @@
           <mat-step [stepControl]="thirdFormGroup">
             <form [formGroup]="thirdFormGroup" class="step2">
               <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
-              <div style="display: flex;">
-                <div style="width: 50%;">
-                  <mat-label class="open">Open
-                  </mat-label>
-                  <mat-form-field>
-                    <mat-label> Temp (*C)</mat-label>
-                    <input type="tel" matInput formControlName="tempC" required />
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label> Density(@15*C)</mat-label>
-                    <input type="tel" matInput required formControlName="densityC" />
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label>V.C.F ASTM54(B)</mat-label>
-                    <input type="tel" matInput formControlName="vcfAstm" required />
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label> Gross Standard Cu(Metres @ 15 *C)</mat-label>
-                    <input type="tel" matInput formControlName="grossStandardcu" required />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label> Gross Tonnage(M/tons in VAC)</mat-label>
-                    <input type="tel" matInput formControlName="grosstonnage" required />
-                  </mat-form-field>
-                </div>
-                <div style="width: 50%;">
-                  <mat-label class="open">Close 
-                  </mat-label>
-                  <mat-form-field>
-                    <mat-label> Temp (*C)</mat-label>
-                    <input type="tel" matInput formControlName="closetempC" required />
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label> Density(@15*C)</mat-label>
-                    <input type="tel" matInput required formControlName="closedensityC" />
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label> V.C.F ASTM54(B)</mat-label>
-                    <input type="tel" matInput formControlName="closevcfAstm" required />
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label> Gross Standard Cu(Metres @ 15 *C)</mat-label>
-                    <input type="tel" matInput formControlName="closegrossStandardcu" required />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label> Gross Tonnage(M/tons in VAC)</mat-label>
-                    <input type="tel" matInput formControlName="closegrosstonnage" required />
-                  </mat-form-field>
-                </div>
+              <div>
+                <mat-form-field>
+                  <mat-label> Temp (*C)</mat-label>
+                  <input type="tel" matInput formControlName="tempC" required />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <mat-label> Density(@15*C)</mat-label>
+                  <input type="tel" matInput required formControlName="densityC" />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <mat-label>V.C.F ASTM54(B)</mat-label>
+                  <input type="tel" matInput formControlName="vcfAstm" required />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <mat-label> Gross Standard Cu(Metres @ 15 *C)</mat-label>
+                  <input type="tel" matInput formControlName="grossStandardcu" required />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <mat-label> Gross Tonnage(M/tons in VAC)</mat-label>
+                  <input type="tel" matInput formControlName="grosstonnage" required />
+                </mat-form-field>
               </div>
               <div class="stepper-btn">
+
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext [disabled]="thirdFormGroup.invalid">Next</button>
               </div>
             </form>
           </mat-step>
           <mat-step>
-            <div style="display:flex;width: 96%;margin-left: 1%">
-              <div style=" width: 50%;margin-left: 2%;">
-                <mat-label class="open">Open
-                </mat-label>
-                <!-- <ng-template matStepLabel>Done</ng-template> -->
-                <div class="list">
-                  <span><b> Free/Water (metres/ft-ins)
-                    </b></span>
-                  <span>{{ secondFormGroup.get("freeWatermetres").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Total Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Free Water(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b>Roof Corr'n(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Temp (*C)</b></span>
-                  <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Density(@15*C)</b></span>
-                  <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> V.C.F ASTM54(B)</b></span>
-                  <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
-                  <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Tonnage(M/tons in VAC)</b></span>
-                  <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
-                </div>
-
-                <div class="list">
-                  <span><b> Free/Water (metres/ft-ins)
-                    </b></span>
-                  <span>{{ secondFormGroup.get("freeWatermetres").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Total Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Free Water(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Roof Corr'n(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Temp (*C)</b></span>
-                  <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Density(@15*C)</b></span>
-                  <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> V.C.F ASTM54(B)</b></span>
-                  <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
-                  <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Tonnage(M/tons in VAC)</b></span>
-                  <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
-                </div>
-
-
-              </div>
-              <div style="width: 50%;margin-left: 2%;">
-                <mat-label class="open">Close 
-                </mat-label>
-                <div class="list">
-                  <span><b> Free/Water (metres/ft-ins)
-                    </b></span>
-                  <span>{{ secondFormGroup.get("closefreeWatermetres").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Total Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closetotalObservedcubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Free Water(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closefreeWatercubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Roof Corr'n(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closeroofCorrncubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closegrossObservedcubic").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Temp (*C)</b></span>
-                  <span>{{ thirdFormGroup.get("closetempC").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Density(@15*C)</b></span>
-                  <span>{{ thirdFormGroup.get("closedensityC").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> V.C.F ASTM54(B)</b></span>
-                  <span>{{ thirdFormGroup.get("closevcfAstm").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
-                  <span>{{ thirdFormGroup.get("closegrossStandardcu").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Tonnage(M/tons in VAC)</b></span>
-                  <span>{{ thirdFormGroup.get("closegrosstonnage").value | number }}</span>
-                </div>
-
-                <div class="list">
-                  <span><b> Free/Water (metres/ft-ins)
-                    </b></span>
-                  <span>{{ secondFormGroup.get("closefreeWatermetres").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Total Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closetotalObservedcubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Free Water(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closefreeWatercubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Roof Corr'n(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closeroofCorrncubic").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Observed(cubic metres)</b></span>
-                  <span>{{ secondFormGroup.get("closegrossObservedcubic").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Temp (*C)</b></span>
-                  <span>{{ thirdFormGroup.get("closetempC").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Density(@15*C)</b></span>
-                  <span>{{ thirdFormGroup.get("closedensityC").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> V.C.F ASTM54(B)</b></span>
-                  <span>{{ thirdFormGroup.get("closevcfAstm").value | number }}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
-                  <span>{{ thirdFormGroup.get("closegrossStandardcu").value | number}}</span>
-                </div>
-                <div class="list">
-                  <span><b> Gross Tonnage(M/tons in VAC)</b></span>
-                  <span>{{ thirdFormGroup.get("closegrosstonnage").value | number }}</span>
-                </div>
-
-
-              </div>
+            <!-- <ng-template matStepLabel>Done</ng-template> -->
+            <div class="list">
+              <span><b> Free/Water (metres/ft-ins)
+                </b></span>
+              <span>{{ secondFormGroup.get("freeWatermetres").value | number}}</span>
             </div>
+            <div class="list">
+              <span><b> Total Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Free Water(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b>Roof Corr'n(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Temp (*C)</b></span>
+              <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Density(@15*C)</b></span>
+              <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> V.C.F ASTM54(B)</b></span>
+              <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
+              <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Tonnage(M/tons in VAC)</b></span>
+              <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
+            </div>
+
+            <div class="list">
+              <span><b> Free/Water (metres/ft-ins)
+                </b></span>
+              <span>{{ secondFormGroup.get("freeWatermetres").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Total Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Free Water(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Roof Corr'n(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Temp (*C)</b></span>
+              <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Density(@15*C)</b></span>
+              <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> V.C.F ASTM54(B)</b></span>
+              <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
+              <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Tonnage(M/tons in VAC)</b></span>
+              <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
+            </div>
+
+
             <div style="display: flex">
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
               </div>
               <div class="stepper-btn">
+
+              <button mat-button matStepperNext >Next</button>
+            </div>
+              <div class="stepper-btn">
                 <button mat-button (click)="stepper.reset()">Reset</button>
               </div>
               <div class="stepper-btn1" style="text-align: right; width: 100%">
-                <button mat-button (click)="saveDSR()">Save</button>
+                <button mat-button (click)="saveDSR(stepper)">Save</button>
               </div>
             </div>
           </mat-step>
+          <mat-step>
+            <!-- <ng-template matStepLabel>Done</ng-template> -->
+            <div class="list">
+              <span><b> Free/Water (metres/ft-ins)
+                </b></span>
+              <span >{{sstqrresponse }}</span>
+            </div>
+            <div class="list">
+              <span><b> Total Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Free Water(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b>Roof Corr'n(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Temp (*C)</b></span>
+              <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Density(@15*C)</b></span>
+              <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> V.C.F ASTM54(B)</b></span>
+              <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
+              <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Tonnage(M/tons in VAC)</b></span>
+              <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
+            </div>
+
+            <div class="list">
+              <span><b> Free/Water (metres/ft-ins)
+                </b></span>
+              <span>{{ secondFormGroup.get("freeWatermetres").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Total Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("totalObservedcubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Free Water(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("freeWatercubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Roof Corr'n(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("roofCorrncubic").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Observed(cubic metres)</b></span>
+              <span>{{ secondFormGroup.get("grossObservedcubic").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Temp (*C)</b></span>
+              <span>{{ thirdFormGroup.get("tempC").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Density(@15*C)</b></span>
+              <span>{{ thirdFormGroup.get("densityC").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> V.C.F ASTM54(B)</b></span>
+              <span>{{ thirdFormGroup.get("vcfAstm").value | number }}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Standard Cu(Metres @ 15 *C)</b></span>
+              <span>{{ thirdFormGroup.get("grossStandardcu").value | number}}</span>
+            </div>
+            <div class="list">
+              <span><b> Gross Tonnage(M/tons in VAC)</b></span>
+              <span>{{ thirdFormGroup.get("grosstonnage").value | number }}</span>
+            </div>
+            </mat-step>
         </mat-horizontal-stepper>
       </ion-col>
     </ion-row>
