@@ -178,7 +178,7 @@ export class ApiService {
         this.httpClient.post(
           'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
-          {
+          [{
 
             "tank_id": sstqr.id,
             "state": 0,
@@ -194,6 +194,23 @@ export class ApiService {
             "gross_standard_cu_meters": sstqr.grossStandardcu,
             "gross_tonnage_mega_ton": sstqr.grosstonnage
           },
+          {
+             "tank_id": sstqr.id,
+            "state": 1,
+            "innage_or_ullage_meter_ft": sstqr.closeinnageMetres,
+            "free_water_meter_ft": sstqr.closefreeWatermetres,
+            "total_observed_cubic_meter": sstqr.closetotalObservedcubic,
+            "free_water_cubic_meter": sstqr.closefreeWatercubic,
+            "roof_corr_cubic_meter": sstqr.closeroofCorrncubic,
+            "gross_observed_cubic_meter": sstqr.closegrossObservedcubic,
+            "temperature_deg_c": sstqr.closetempC,
+            "density": sstqr.closedensityC,
+            "v_c_f_astm54_b": sstqr.closevcfAstm,
+            "gross_standard_cu_meters": sstqr.closegrossStandardcu,
+            "gross_tonnage_mega_ton": sstqr.closegrosstonnage
+
+          }
+          ]
 
         ).pipe(
           map((resTank: any) => {

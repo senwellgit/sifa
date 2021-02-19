@@ -13,6 +13,7 @@ import { LoaderProvider } from 'src/service/loaderProvider';
   styleUrls: ['./sstqr-stepper.component.scss'],
 })
 export class SstqrStepperComponent implements OnInit {
+ opetions=['open','close'];
   loggedUser$ = this.apiService.loggedInUserData$.pipe(
     map((res) => {
       if (!res) {
@@ -40,6 +41,7 @@ export class SstqrStepperComponent implements OnInit {
       tankState: ['', Validators.required],
       depot: [{ value: '', disabled: true }, Validators.required],
       tank: ['', Validators.required],
+      openingTank:['',Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       innageMetres: ['', Validators.required],
@@ -48,6 +50,12 @@ export class SstqrStepperComponent implements OnInit {
       freeWatercubic: ['', [Validators.required]],
       roofCorrncubic: ['', [Validators.required]],
       grossObservedcubic: ['', [Validators.required]],
+      closeinnageMetres: ['', Validators.required],
+      closefreeWatermetres: ['', Validators.required],
+      closetotalObservedcubic: ['', [Validators.required]],
+      closefreeWatercubic: ['', [Validators.required]],
+      closeroofCorrncubic: ['', [Validators.required]],
+      closegrossObservedcubic: ['', [Validators.required]]
     });
     this.thirdFormGroup = this._formBuilder.group({
       tempC: ['', Validators.required],
@@ -55,6 +63,11 @@ export class SstqrStepperComponent implements OnInit {
       vcfAstm: ['', Validators.required],
       grossStandardcu: ['', Validators.required],
       grosstonnage: ['', Validators.required],
+      closetempC: ['', Validators.required],
+      closedensityC: ['', Validators.required],
+      closevcfAstm: ['', Validators.required],
+      closegrossStandardcu: ['', Validators.required],
+      closegrosstonnage: ['', Validators.required],
     });
   }
 

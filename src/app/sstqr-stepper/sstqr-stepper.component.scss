@@ -41,11 +41,11 @@ ion-header {
       }
     }
   }
-  form {
+ /* form {
     div {
       margin-top: 4vh;
     }
-  }
+  }*/
   .stepper-btn1 {
     button {
       height: 5vh;
@@ -59,12 +59,14 @@ ion-header {
   }
   .stepper-btn {
     button {
-      height: 5vh;
-      width: 10vh;
+      height: 8.89vw;;
+      width: 17.7vw;
       background: blue;
       border-radius: 10px;
       color: white;
       margin-right: 10px;
+      margin-left: 5vh;
+    margin-bottom: 2vh;
      
     }
   }
@@ -75,6 +77,7 @@ ion-header {
     border-radius: 2vh;
     padding: 0 2vh;
     margin-bottom: 4vh;
+    margin-left: 4.5vh;
   }
   .mat-form-field-underline {
     bottom: 0em !important;
@@ -86,5 +89,29 @@ ion-header {
     padding: 1vh;
     border-radius: 1vh;
     margin-bottom: 2vh;
+  }
+  
+
+  .step2{
+
+   ::ng-deep .mat-form-field{
+    background: white;
+    border-radius: 2vh;
+    margin-bottom: 4vh;
+    width: 44vw;
+    margin-left: 1vh;
+    margin-top: 1vh;
+    }
+  }
+
+  ::ng-deep app-sstqr-stepper{
+  ::ng-deep .mat-horizontal-content-container{
+    padding: 0!important;
+  }
+}
+  .open{
+    margin-left: 2vh;
+    margin-bottom: 1vh;
+    color: blue;
   }
   
