@@ -16,7 +16,7 @@ export class ApiService {
   updateFilterSearch$ = new ReplaySubject(1);
   static Token = '';
   static isCordova = false;
-  responsedata:any;
+  responsedata: any;
 
   filteredTank$ = this.updateFilterSearch$.pipe(
     withLatestFrom(this.tanks$),
@@ -32,7 +32,7 @@ export class ApiService {
     private loading: LoaderProvider,
     private http: HTTP,
     private httpClient: HttpClient
-  ) { }
+  ) {}
 
   login(userName: string, password: string) {
     if (!ApiService.isCordova) {
@@ -143,7 +143,7 @@ export class ApiService {
   }
 
   saveDailyReport(dsr) {
-    debugger
+    debugger;
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-daily-reports',
 
@@ -169,68 +169,66 @@ export class ApiService {
         Authorization: `Bearer ${ApiService.Token}`,
       }
     );
-
   }
 
- saveSSTQR(sstqr: any) {
-    debugger
+  saveSSTQR(sstqr: any) {
+    debugger;
     if (!ApiService.isCordova) {
       return new Promise((resolve, rejects) => {
-        this.httpClient.post(
-          'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
+        this.httpClient
+          .post(
+            'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
-          {
-
-            "tank_id": sstqr.id,
-            "state": 0,
-            "innage_or_ullage_meter_ft": sstqr.innageMetres,
-            "free_water_meter_ft": sstqr.freeWatermetres,
-            "total_observed_cubic_meter": sstqr.totalObservedcubic,
-            "free_water_cubic_meter": sstqr.freeWatercubic,
-            "roof_corr_cubic_meter": sstqr.roofCorrncubic,
-            "gross_observed_cubic_meter": sstqr.grossObservedcubic,
-            "temperature_deg_c": sstqr.tempC,
-            "density": sstqr.densityC,
-            "v_c_f_astm54_b": sstqr.vcfAstm,
-            "gross_standard_cu_meters": sstqr.grossStandardcu,
-            "gross_tonnage_mega_ton": sstqr.grosstonnage
-          }
-
-        ).pipe(
-          map((resTank: any) => {
-            debugger;
-            resTank.data = JSON.stringify(resTank);
-            resolve(resTank);
-            this.responsedata=resTank.data;
-            debugger
-          })
-        ).subscribe();
-      })
+            {
+              tank_id: sstqr.id,
+              state: 0,
+              innage_or_ullage_meter_ft: sstqr.innageMetres,
+              free_water_meter_ft: sstqr.freeWatermetres,
+              total_observed_cubic_meter: sstqr.totalObservedcubic,
+              free_water_cubic_meter: sstqr.freeWatercubic,
+              roof_corr_cubic_meter: sstqr.roofCorrncubic,
+              gross_observed_cubic_meter: sstqr.grossObservedcubic,
+              temperature_deg_c: sstqr.tempC,
+              density: sstqr.densityC,
+              v_c_f_astm54_b: sstqr.vcfAstm,
+              gross_standard_cu_meters: sstqr.grossStandardcu,
+              gross_tonnage_mega_ton: sstqr.grosstonnage,
+            }
+          )
+          .pipe(
+            map((resTank: any) => {
+              debugger;
+              resTank.data = JSON.stringify(resTank);
+              resolve(resTank);
+              this.responsedata = resTank.data;
+              debugger;
+            })
+          )
+          .subscribe();
+      });
     }
-    debugger
+    debugger;
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
       {
-
-        "tank_id": sstqr.id,
-        "state": 0,
-        "innage_or_ullage_meter_ft": sstqr.innageMetres,
-        "free_water_meter_ft": sstqr.freeWatermetres,
-        "total_observed_cubic_meter": sstqr.totalObservedcubic,
-        "free_water_cubic_meter": sstqr.freeWatercubic,
-        "roof_corr_cubic_meter": sstqr.roofCorrncubic,
-        "gross_observed_cubic_meter": sstqr.grossObservedcubic,
-        "temperature_deg_c": sstqr.tempC,
-        "density": sstqr.densityC,
-        "v_c_f_astm54_b": sstqr.vcfAstm,
-        "gross_standard_cu_meters": sstqr.grossStandardcu,
-        "gross_tonnage_mega_ton": sstqr.grosstonnage
+        tank_id: sstqr.id,
+        state: 0,
+        innage_or_ullage_meter_ft: sstqr.innageMetres,
+        free_water_meter_ft: sstqr.freeWatermetres,
+        total_observed_cubic_meter: sstqr.totalObservedcubic,
+        free_water_cubic_meter: sstqr.freeWatercubic,
+        roof_corr_cubic_meter: sstqr.roofCorrncubic,
+        gross_observed_cubic_meter: sstqr.grossObservedcubic,
+        temperature_deg_c: sstqr.tempC,
+        density: sstqr.densityC,
+        v_c_f_astm54_b: sstqr.vcfAstm,
+        gross_standard_cu_meters: sstqr.grossStandardcu,
+        gross_tonnage_mega_ton: sstqr.grosstonnage,
       },
       {
         Authorization: `Bearer ${ApiService.Token}`,
       }
-    )
+    );
   }
-
 }
