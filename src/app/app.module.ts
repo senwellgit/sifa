@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,7 +23,12 @@ import { InterceptorService } from 'src/service/interceptor.service';
 import { HTTP } from '@ionic-native/http/ngx';
 import { NumberPipePipe } from './number-pipe.pipe';
 import { SstqrStepperComponent } from './sstqr-stepper/sstqr-stepper.component';
-
+import{TruckLoadComponent}from'./truck-load/truck-load.component';
+import{TruckdischargeComponent}from'./truckdischarge/truckdischarge.component';
+import {DepotsuserDashboardComponent}from'./depotsuser-dashboard/depotsuser-dashboard.component';
+import{StationmanagerDashbordComponent}from'./stationmanager-dashbord/stationmanager-dashbord.component';
+import{CasualuserDashbordComponent}from'./casualuser-dashbord/casualuser-dashbord.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,14 +36,21 @@ import { SstqrStepperComponent } from './sstqr-stepper/sstqr-stepper.component';
     SdrStepperComponent,
     SstqrStepperComponent,
     NumberPipePipe,
+    TruckLoadComponent,
+    TruckdischargeComponent,
+    DepotsuserDashboardComponent,
+    StationmanagerDashbordComponent,
+    CasualuserDashbordComponent
   ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatExpansionModule,
     AppRoutingModule,
     HttpClientModule,
     MatStepperModule,

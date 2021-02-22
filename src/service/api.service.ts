@@ -16,7 +16,7 @@ export class ApiService {
   updateFilterSearch$ = new ReplaySubject(1);
   static Token = '';
   static isCordova = false;
-  responsedata:any;
+  responsedata: any;
 
   filteredTank$ = this.updateFilterSearch$.pipe(
     withLatestFrom(this.tanks$),
@@ -143,7 +143,10 @@ export class ApiService {
   }
 
   saveDailyReport(dsr) {
-    debugger
+
+
+
+
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-daily-reports',
 
@@ -172,8 +175,8 @@ export class ApiService {
 
   }
 
- saveSSTQR(sstqr: any) {
-    debugger
+  saveSSTQR(sstqr: any) {
+
     if (!ApiService.isCordova) {
       return new Promise((resolve, rejects) => {
         this.httpClient.post(
@@ -198,16 +201,16 @@ export class ApiService {
 
         ).pipe(
           map((resTank: any) => {
-            debugger;
+
             resTank.data = JSON.stringify(resTank);
             resolve(resTank);
-            this.responsedata=resTank.data;
-            debugger
+            this.responsedata = resTank.data;
+
           })
         ).subscribe();
       })
     }
-    debugger
+
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
@@ -232,5 +235,11 @@ export class ApiService {
       }
     )
   }
+  saveTruck(truckload: any) {
 
+    if (!ApiService.isCordova) {
+
+
+    }
+  }
 }

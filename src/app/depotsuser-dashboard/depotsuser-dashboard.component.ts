@@ -4,11 +4,15 @@ import { map } from 'rxjs/operators';
 import { ApiService } from 'src/service/api.service';
 
 @Component({
-  selector: 'app-surveyor-dashboard',
-  templateUrl: './surveyor-dashboard.component.html',
-  styleUrls: ['./surveyor-dashboard.component.scss'],
+  selector: 'app-depotsuser-dashboard',
+  templateUrl: './depotsuser-dashboard.component.html',
+  styleUrls: ['./depotsuser-dashboard.component.scss'],
 })
-export class SurveyorDashboardComponent implements OnInit {
+export class DepotsuserDashboardComponent implements OnInit {
+
+  constructor(private apiService: ApiService, private router: Router) {}
+
+  ngOnInit() {}
   loggedUser$ = this.apiService.loggedInUserData$.pipe(
     map((res) => {
       if (!res) {
@@ -18,26 +22,25 @@ export class SurveyorDashboardComponent implements OnInit {
       return res;
     })
   );
-  constructor(private apiService: ApiService, private router: Router) {}
+ 
+ 
+  // dsr() {
+  //   this.router.navigateByUrl('sdr');
+  // }
 
-  ngOnInit() {}
-
-  dsr() {
-    this.router.navigateByUrl('sdr');
-  }
-
-  sstqr() {
-    this.router.navigateByUrl('sstqr');
-  }
+  // sstqr() {
+  //   this.router.navigateByUrl('sstqr');
+  // }
   tlwb(){
     this.router.navigateByUrl('truckload');
   }
-  tds(){
-    this.router.navigateByUrl('truckdischarge');
-  }
+  // tds(){
+  //   this.router.navigateByUrl('truckdischarge');
+  // }
   logout() {
     localStorage.clear();
     sessionStorage.clear();
     this.router.navigateByUrl('');
   }
+
 }

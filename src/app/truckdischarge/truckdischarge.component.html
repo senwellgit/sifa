@@ -1,0 +1,154 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="9">
+        <ion-icon (click)="goBack()" name="caret-back-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="3"> <span (click)="logout()">Logout</span></ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>
+          Dear
+          <!-- {{ (loggedUser$ | async)?.data?.first_name }} -->
+          , please fill the
+          required details
+        </h2>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper1 style="background-color: lightgray; border-radius: 10px">
+          <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+            <form [formGroup]="firstFormGroup">
+              <mat-form-field>
+                <mat-label>Way Bill No </mat-label>
+                <input type="text" aria-label="Number" matInput formControlName="waybillno" required>
+              </mat-form-field>
+              <!-- <mat-form-field>
+                <mat-label>Discharge Vucher Number
+                </mat-label>
+                <input type="text" aria-label="Number" matInput formControlName="dischargeVuchernumber" required>
+              </mat-form-field> -->
+              <mat-form-field>
+                <mat-label>Station Name </mat-label>
+                <input type="text" aria-label="Number" matInput formControlName="stationName" required>
+              </mat-form-field>
+              <div class="stepper-btn">
+                <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+            <form [formGroup]="secondFormGroup">
+              <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+              <mat-form-field>
+                <mat-label>Truck License Number
+                </mat-label>
+                <input type="tel" matInput formControlName="truckLicensenumber" required />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Truck Driver
+
+                </mat-label>
+                <input type="tel" matInput required formControlName="truckDriver" />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Volume Loaded at Depot
+              </mat-label>
+                <input type="tel" matInput required formControlName="volumeLoadedatdepot" />
+             </mat-form-field>
+             <!--- <mat-form-field>
+                <mat-label>Compartment
+                </mat-label>
+                <input type="date" matInput formControlName="compartment" required />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Bottom Lock
+                </mat-label>
+                <input type="tel" matInput formControlName="bottomLock" required />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Pit Delivered to.
+
+                </mat-label>
+                <input type="tel" matInput formControlName="pitDeliveredto" required />
+              </mat-form-field> -->
+
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+              </div>
+            </form>
+          </mat-step>
+
+         
+          <mat-step>
+            <div class="list">
+              <span><b>WAYBILL NO:</b></span>
+              <span>{{ firstFormGroup.get("waybillno").value }}</span>
+            </div>
+            <!-- <div class="list">
+              <span><b>Discharge Vucher Number
+              </b></span>
+              <span>{{ firstFormGroup.get("dischargeVuchernumber").value }}</span>
+            </div> -->
+            <div class="list">
+              <span><b>Station Name
+              </b></span>
+              <span>{{ firstFormGroup.get("stationName").value }}</span>
+            </div>
+
+
+
+            <div class="list">
+              <span><b>Truck License Number
+              </b></span>
+              <span>{{ secondFormGroup.get("truckLicensenumber").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Truck Driver
+              </b></span>
+              <span>{{ secondFormGroup.get("truckDriver").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Volume Loaded at Depot
+              </b></span>
+              <span>{{ secondFormGroup.get("volumeLoadedatdepot").value }}</span>
+            </div>
+            <!-- <div class="list">
+              <span><b>Compartment
+              </b></span>
+              <span>{{ secondFormGroup.get("compartment").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Bottom Lock
+              </b></span>
+              <span>{{ secondFormGroup.get("bottomLock").value }}</span>
+            </div>
+            <div class="list">
+              <span><b>Pit Delivered to.
+              </b></span>
+              <span>{{ secondFormGroup.get("pitDeliveredto").value }}</span>
+            </div> -->
+                      
+            <div style="display: flex">
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+              </div>
+              <div class="stepper-btn">
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+              <div class="stepper-btn1" style="text-align: right; width: 100%">
+                <button mat-button (click)="saveTruckLoad()">Save</button>
+              </div>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

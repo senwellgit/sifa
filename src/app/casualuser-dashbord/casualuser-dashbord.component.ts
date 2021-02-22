@@ -3,12 +3,13 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ApiService } from 'src/service/api.service';
 
+
 @Component({
-  selector: 'app-surveyor-dashboard',
-  templateUrl: './surveyor-dashboard.component.html',
-  styleUrls: ['./surveyor-dashboard.component.scss'],
+  selector: 'app-casualuser-dashbord',
+  templateUrl: './casualuser-dashbord.component.html',
+  styleUrls: ['./casualuser-dashbord.component.scss'],
 })
-export class SurveyorDashboardComponent implements OnInit {
+export class CasualuserDashbordComponent implements OnInit {
   loggedUser$ = this.apiService.loggedInUserData$.pipe(
     map((res) => {
       if (!res) {
@@ -19,16 +20,14 @@ export class SurveyorDashboardComponent implements OnInit {
     })
   );
   constructor(private apiService: ApiService, private router: Router) {}
-
   ngOnInit() {}
+  // dsr() {
+  //   this.router.navigateByUrl('sdr');
+  // }
 
-  dsr() {
-    this.router.navigateByUrl('sdr');
-  }
-
-  sstqr() {
-    this.router.navigateByUrl('sstqr');
-  }
+  // sstqr() {
+  //   this.router.navigateByUrl('sstqr');
+  // }
   tlwb(){
     this.router.navigateByUrl('truckload');
   }
@@ -40,4 +39,5 @@ export class SurveyorDashboardComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigateByUrl('');
   }
+
 }

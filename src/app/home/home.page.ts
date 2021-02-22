@@ -51,9 +51,13 @@ export class HomePage {
             debugger
             ApiService.Token = parsedResponse.data.token;
             localStorage.setItem('user', loggedInDetails.data);
+
             this.apiService.loggedInUserData$.next(loggedInDetails.data);
             this.apiService.getDepotAndTank();
-            this.router.navigateByUrl('survayer-dashboard');
+        //   this.router.navigateByUrl('surveyor-dashboard');
+          //  this.router.navigateByUrl('depotsuser-dashboard');
+         //   this.router.navigateByUrl('stationmanager-dashbord');
+            this.router.navigateByUrl('casualuser-dashboard');
           } else {
             alert(loggedInDetails.message);
             debugger
