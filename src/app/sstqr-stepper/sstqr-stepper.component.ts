@@ -13,7 +13,7 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./sstqr-stepper.component.scss'],
 })
 export class SstqrStepperComponent implements OnInit {
- opetions=['open','close'];
+  opetions = ['open', 'close'];
   loggedUser$ = this.apiService.loggedInUserData$.pipe(
     map((res) => {
       if (!res) {
@@ -30,8 +30,10 @@ export class SstqrStepperComponent implements OnInit {
   isLinear = true;
   filteredTanks$ = this.apiService.tanks$;
   selectedTank: any;
-  sstqrresponse:any;
-  data:any;
+  sstqrresponse: any;
+  data: any;
+  isReportDone: boolean;
+  closingStock: any;
   constructor(
     private _formBuilder: FormBuilder,
     private location: Location,
@@ -43,7 +45,6 @@ export class SstqrStepperComponent implements OnInit {
       tankState: ['', Validators.required],
       depot: [{ value: '', disabled: true }, Validators.required],
       tank: ['', Validators.required],
-      openingTank:['',Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       innageMetres: ['', Validators.required],
@@ -52,7 +53,6 @@ export class SstqrStepperComponent implements OnInit {
       freeWatercubic: ['', [Validators.required]],
       roofCorrncubic: ['', [Validators.required]],
       grossObservedcubic: ['', [Validators.required]],
-    
     });
     this.thirdFormGroup = this._formBuilder.group({
       tempC: ['', Validators.required],
@@ -65,14 +65,11 @@ export class SstqrStepperComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.depot$.subscribe((data) => {
-      debugger;
       if (!data) {
         return;
       }
       this.firstFormGroup.controls.depot.patchValue(data[0].name);
-     
     });
-    debugger
 
     this.firstFormGroup.get('tankState').valueChanges.pipe(
       startWith(''),
@@ -90,9 +87,8 @@ export class SstqrStepperComponent implements OnInit {
     this.location.back();
   }
 
-saveDSR(stepper:MatStepper) {
+  saveSSTQR(stepper: any) {
     this.loading.showLoader();
-    debugger;
     this.apiService
       .saveSSTQR({
         ...this.firstFormGroup.value,
@@ -102,18 +98,23 @@ saveDSR(stepper:MatStepper) {
       })
       .then((res: any) => {
         this.loading.hideLoader();
-
         if (JSON.parse(res.data).status == 200) {
-         debugger
+          debugger;
           alert('Shore Report has been submitted.');
-          this.sstqrresponse=this.apiService.responsedata
-          debugger
-         /// stepper.next();
-         // this.router.navigateByUrl('survayer-dashboard');
+          this.sstqrresponse = this.apiService.responsedata;
+          this.isReportDone = true;
+          this.closingStock = JSON.parse(res.data).data[0];
+          stepper.selected.completed = true;
+          stepper.selected.editable = false;
+          stepper.next();
         } else {
           alert('Something went wrong.');
         }
       });
+  }
+
+  goBackToDash() {
+    this.router.navigateByUrl('survayer-dashboard');
   }
 
   logout() {

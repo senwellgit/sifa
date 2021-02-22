@@ -32,7 +32,7 @@ export class ApiService {
     private loading: LoaderProvider,
     private http: HTTP,
     private httpClient: HttpClient
-  ) { }
+  ) {}
 
   login(userName: string, password: string) {
     if (!ApiService.isCordova) {
@@ -143,10 +143,6 @@ export class ApiService {
   }
 
   saveDailyReport(dsr) {
-
-
-
-
     return this.http.post(
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-daily-reports',
 
@@ -172,7 +168,6 @@ export class ApiService {
         Authorization: `Bearer ${ApiService.Token}`,
       }
     );
-
   }
 
   saveSSTQR(sstqr: any) {
@@ -215,26 +210,27 @@ export class ApiService {
       'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
       {
-
-        "tank_id": sstqr.id,
-        "state": 0,
-        "innage_or_ullage_meter_ft": sstqr.innageMetres,
-        "free_water_meter_ft": sstqr.freeWatermetres,
-        "total_observed_cubic_meter": sstqr.totalObservedcubic,
-        "free_water_cubic_meter": sstqr.freeWatercubic,
-        "roof_corr_cubic_meter": sstqr.roofCorrncubic,
-        "gross_observed_cubic_meter": sstqr.grossObservedcubic,
-        "temperature_deg_c": sstqr.tempC,
-        "density": sstqr.densityC,
-        "v_c_f_astm54_b": sstqr.vcfAstm,
-        "gross_standard_cu_meters": sstqr.grossStandardcu,
-        "gross_tonnage_mega_ton": sstqr.grosstonnage
+        tank_id: sstqr.id,
+        state: 0,
+        innage_or_ullage_meter_ft: sstqr.innageMetres,
+        free_water_meter_ft: sstqr.freeWatermetres,
+        total_observed_cubic_meter: sstqr.totalObservedcubic,
+        free_water_cubic_meter: sstqr.freeWatercubic,
+        roof_corr_cubic_meter: sstqr.roofCorrncubic,
+        gross_observed_cubic_meter: sstqr.grossObservedcubic,
+        temperature_deg_c: sstqr.tempC,
+        density: sstqr.densityC,
+        v_c_f_astm54_b: sstqr.vcfAstm,
+        gross_standard_cu_meters: sstqr.grossStandardcu,
+        gross_tonnage_mega_ton: sstqr.grosstonnage,
       },
       {
         Authorization: `Bearer ${ApiService.Token}`,
       }
-    )
+    );
   }
+
+  
   saveTruck(truckload: any) {
 
     if (!ApiService.isCordova) {
