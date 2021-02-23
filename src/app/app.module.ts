@@ -29,6 +29,7 @@ import {DepotsuserDashboardComponent}from'./depotsuser-dashboard/depotsuser-dash
 import{StationmanagerDashbordComponent}from'./stationmanager-dashbord/stationmanager-dashbord.component';
 import{CasualuserDashbordComponent}from'./casualuser-dashbord/casualuser-dashbord.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {GuardAuthService} from'../service/guard-auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
   ],
   providers: [
     NumberPipePipe,
+    GuardAuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

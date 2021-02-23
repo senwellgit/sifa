@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Capacitor, SplashScreen } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
 import { ApiService } from 'src/service/api.service';
+import {GuardAuthService} from'../service/guard-auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

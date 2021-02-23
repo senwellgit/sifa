@@ -8,7 +8,7 @@ import { StationmanagerDashbordComponent } from './stationmanager-dashbord/stati
 import { SurveyorDashboardComponent } from './surveyor-dashboard/surveyor-dashboard.component';
 import { TruckLoadComponent } from './truck-load/truck-load.component';
 import { TruckdischargeComponent } from './truckdischarge/truckdischarge.component';
-
+import {GuardAuthService} from'../service/guard-auth.service';
 const routes: Routes = [
   {
     path: 'home',
@@ -18,14 +18,20 @@ const routes: Routes = [
   {
     path: 'survayer-dashboard',
     component: SurveyorDashboardComponent,
+    canActivate: [GuardAuthService]
   },
   {
     path:'casualuser-dashboard',
-    component:CasualuserDashbordComponent
+    component:CasualuserDashbordComponent,
+    canActivate: [GuardAuthService]
+  
+    
   },
   {
     path:'stationmanager-dashbord',
-    component:StationmanagerDashbordComponent
+    component:StationmanagerDashbordComponent,
+    canActivate: [GuardAuthService]
+  
 
   },
   {
@@ -34,7 +40,9 @@ component:TruckdischargeComponent
   },
   {
     path:'depotsuser-dashboard',
-    component:DepotsuserDashboardComponent
+    component:DepotsuserDashboardComponent,
+    canActivate: [GuardAuthService]
+  
   },
   {
 path:'truckload',

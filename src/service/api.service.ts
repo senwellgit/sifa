@@ -10,6 +10,7 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root',
 })
 export class ApiService {
+ // canlogin:any;
   loggedInUserData$ = new BehaviorSubject(null);
   depot$ = new BehaviorSubject(null);
   tanks$ = new BehaviorSubject([]);
@@ -44,7 +45,10 @@ export class ApiService {
           })
           .pipe(
             map((res: any) => {
+              
               res.data = JSON.stringify(res);
+              
+              //res.status==200?this.canlogin=true:this.canlogin=false;
               resolve(res);
             })
           )
