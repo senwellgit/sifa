@@ -16,7 +16,7 @@ import { of } from 'rxjs';
 })
 export class TruckLoadComponent implements OnInit {
   currentdate = new Date();
-
+  isLinear=true;
   firstFormGroup: any;
   secondFormGroup: any;
   thirdFormGroup: any;
@@ -99,7 +99,11 @@ export class TruckLoadComponent implements OnInit {
   }
 
 
-
+  onTankChange(value: string, allTanks: any[]) {
+    // this.selectedTank = allTanks.find(
+    //   (t) => t.tank_label.toLowerCase() === value.toLowerCase()
+    // );
+  }
   goBack() {
     this.location.back();
   }

@@ -18,7 +18,7 @@
           , please fill the
           required details
         </h2>
-        <mat-horizontal-stepper [linear]="isLinear" #stepper1 style="background-color: lightgray; border-radius: 10px">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper style="background-color: lightgray; border-radius: 10px">
           <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
             <form [formGroup]="firstFormGroup">
               <mat-form-field>
@@ -142,7 +142,7 @@
                 <button mat-button (click)="stepper.reset()">Reset</button>
               </div>
               <div class="stepper-btn1" style="text-align: right; width: 100%">
-                <button mat-button (click)="saveTruckLoad()">Save</button>
+                <button mat-button >Save</button>
               </div>
             </div>
           </mat-step>

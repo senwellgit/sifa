@@ -14,7 +14,7 @@ export class TruckdischargeComponent implements OnInit {
   firstFormGroup: any;
   secondFormGroup: any;
   thirdFormGroup: any;
-
+  isLinear=true;
   constructor(private router: Router,
     private location: Location,
     private apiService: ApiService,
@@ -36,7 +36,11 @@ export class TruckdischargeComponent implements OnInit {
     });
   
   }
-
+  onTankChange(value: string, allTanks: any[]) {
+    // this.selectedTank = allTanks.find(
+    //   (t) => t.tank_label.toLowerCase() === value.toLowerCase()
+    // );
+  }
   ngOnInit() { }
   goBack() {
     this.location.back();
