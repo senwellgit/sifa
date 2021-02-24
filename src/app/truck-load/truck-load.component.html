@@ -34,7 +34,7 @@
                 </mat-autocomplete>
               </mat-form-field>
 
-               <!-- <mat-label>Depot Tank</mat-label>
+              <!-- <mat-label>Depot Tank</mat-label>
                  <mat-form-field>
               <input type="tel" matInput formControlName="depotTank" required />
               </mat-form-field> -->
@@ -123,66 +123,66 @@
                 <input type="tel" matInput formControlName="volumeLoadeatdepot" required />
               </mat-form-field>
               <mat-accordion class="example-headers-align" multi>
-             <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Compartment
-                  </mat-panel-title>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Compartment
+                    </mat-panel-title>
 
-                </mat-expansion-panel-header>
+                  </mat-expansion-panel-header>
 
-                <mat-form-field>
-                  <mat-label>Liquid Height
-                  </mat-label>
-                  <input matInput type="number" formControlName="liquidHeight" required>
-                </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Liquid Height
+                    </mat-label>
+                    <input matInput type="number" formControlName="liquidHeight" required>
+                  </mat-form-field>
 
-                <mat-form-field>
-                  <mat-label>Ullage
-                  </mat-label>
-                  <input matInput type="number" formControlName="ullage"required>
-                </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Ullage
+                    </mat-label>
+                    <input matInput type="number" formControlName="ullage" required>
+                  </mat-form-field>
 
-                <mat-form-field>
-                  <mat-label>Volume
-                  </mat-label>
-                  <input matInput type="number" formControlName="volume"required>
-                </mat-form-field>
-            
-            </mat-expansion-panel>
+                  <mat-form-field>
+                    <mat-label>Volume
+                    </mat-label>
+                    <input matInput type="number" formControlName="volume" required>
+                  </mat-form-field>
 
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Compartment1
-                </mat-panel-title>
+                </mat-expansion-panel>
 
-              </mat-expansion-panel-header>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Compartment1
+                    </mat-panel-title>
 
-              <mat-form-field>
-                <mat-label>Liquid Height
-                </mat-label>
-                <input matInput type="number" formControlName="liquidHeight1" required>
-              </mat-form-field>
+                  </mat-expansion-panel-header>
 
-              <mat-form-field>
-                <mat-label>Ullage
-                </mat-label>
-                <input matInput type="number" formControlName="ullage1" required>
-              </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Liquid Height
+                    </mat-label>
+                    <input matInput type="number" formControlName="liquidHeight1" required>
+                  </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Volume
-                </mat-label>
-                <input matInput type="number"formControlName="volume1" required>
-              </mat-form-field>
-            </mat-expansion-panel>
-          </mat-accordion>
+                  <mat-form-field>
+                    <mat-label>Ullage
+                    </mat-label>
+                    <input matInput type="number" formControlName="ullage1" required>
+                  </mat-form-field>
 
-            <div class="stepper-btn">
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext [disabled]="thirdFormGroup.invalid">Next</button>
-            </div>
+                  <mat-form-field>
+                    <mat-label>Volume
+                    </mat-label>
+                    <input matInput type="number" formControlName="volume1" required>
+                  </mat-form-field>
+                </mat-expansion-panel>
+              </mat-accordion>
+
+              <div class="stepper-btn">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext [disabled]="thirdFormGroup.invalid">Next</button>
+              </div>
             </form>
           </mat-step>
           <mat-step>
@@ -271,8 +271,8 @@
               <div class="stepper-btn1" style="text-align: right; width: 100%">
                 <button mat-button (click)="saveTruckLoad()">Save</button>
               </div>
-              </div>
-              
+            </div>
+
           </mat-step>
         </mat-horizontal-stepper>
       </ion-col>

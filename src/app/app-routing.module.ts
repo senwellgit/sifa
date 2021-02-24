@@ -8,7 +8,7 @@ import { StationmanagerDashbordComponent } from './stationmanager-dashbord/stati
 import { SurveyorDashboardComponent } from './surveyor-dashboard/surveyor-dashboard.component';
 import { TruckLoadComponent } from './truck-load/truck-load.component';
 import { TruckdischargeComponent } from './truckdischarge/truckdischarge.component';
-import {GuardAuthService} from'../service/guard-auth.service';
+import { GuardAuthService } from '../service/guard-auth.service';
 const routes: Routes = [
   {
     path: 'home',
@@ -21,32 +21,32 @@ const routes: Routes = [
     canActivate: [GuardAuthService]
   },
   {
-    path:'casualuser-dashboard',
-    component:CasualuserDashbordComponent,
+    path: 'casualuser-dashboard',
+    component: CasualuserDashbordComponent,
     canActivate: [GuardAuthService]
-  
-    
-  },
-  {
-    path:'stationmanager-dashbord',
-    component:StationmanagerDashbordComponent,
-    canActivate: [GuardAuthService]
-  
+
 
   },
   {
-path:'truckdischarge',
-component:TruckdischargeComponent
-  },
-  {
-    path:'depotsuser-dashboard',
-    component:DepotsuserDashboardComponent,
+    path: 'stationmanager-dashbord',
+    component: StationmanagerDashbordComponent,
     canActivate: [GuardAuthService]
-  
+
+
   },
   {
-path:'truckload',
-component:TruckLoadComponent
+    path: 'truckdischarge',
+    component: TruckdischargeComponent
+  },
+  {
+    path: 'depotsuser-dashboard',
+    component: DepotsuserDashboardComponent,
+    canActivate: [GuardAuthService]
+
+  },
+  {
+    path: 'truckload',
+    component: TruckLoadComponent
   },
   {
     path: 'sdr',
@@ -70,4 +70,4 @@ component:TruckLoadComponent
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

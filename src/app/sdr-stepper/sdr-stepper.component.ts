@@ -11,7 +11,17 @@ import { LoaderProvider } from 'src/service/loaderProvider';
   styleUrls: ['./sdr-stepper.component.scss'],
 })
 export class SdrStepperComponent implements OnInit {
-  loggedUser$ = this.apiService.loggedInUserData$;
+
+  loggedUser$ = this.apiService.loggedInUserData$.pipe(
+    map((res) => {
+      if (!res) {
+        return '';
+      }
+      res = JSON.parse(res);
+      return res;
+    })
+  );
+
   isDisabled = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;

@@ -14,25 +14,24 @@ export class GuardAuthService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): any {
 
-      debugger
-      debugger
-  if (JSON.parse(localStorage.getItem('user')).data.role_name === 'depot_surveyor' && route.url[0].path === "survayer-dashboard"
-  ) {
-    return true
-  }
-  else{
-    this.router.navigateByUrl('/home');
-  }
 
-  if (JSON.parse(localStorage.getItem('user')).data.role_name === 'depot_manager' && route.url[0].path === "depotsuser-dashboard"
-  ) {
-    return true
-  }
-  else{
-    this.router.navigateByUrl('/home');
-  }
+    if (JSON.parse(localStorage.getItem('user'))?.data.role_name === 'depot_surveyor' && route.url[0].path === "survayer-dashboard"
+    ) {
+      return true
+    }
+    else {
+      this.router.navigateByUrl('/home');
+    }
 
-  return false
+    if (JSON.parse(localStorage.getItem('user'))?.data.role_name === 'depot_manager' && route.url[0].path === "depotsuser-dashboard"
+    ) {
+      return true
+    }
+    else {
+      this.router.navigateByUrl('/home');
+    }
 
-}
+    return false
+
+  }
 }
