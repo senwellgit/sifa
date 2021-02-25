@@ -23,7 +23,6 @@ export class AppComponent {
       SplashScreen.hide();
       let userdata = JSON.parse(localStorage.getItem('user'))?.data.role_name;
       if (localStorage.getItem('user')) {
-        debugger;
         ApiService.Token = JSON.parse(localStorage.getItem('user'))?.data.token;
         this.apiService.getDepotAndTank();
         this.apiService.loggedInUserData$.next(localStorage.getItem('user'));

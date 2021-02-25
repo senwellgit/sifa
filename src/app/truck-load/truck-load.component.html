@@ -14,15 +14,19 @@
       <ion-col>
         <h2>
           Dear
-          <!-- {{ (loggedUser$ | async)?.data?.first_name }} -->
-          , please fill the
-          required details
+          {{ (loggedUser$ | async)?.data?.first_name }}, please fill the required details
         </h2>
-        <mat-horizontal-stepper [linear]="isLinear" #stepper style="background-color: lightgray; border-radius: 10px">
-          <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+        <mat-horizontal-stepper
+          [linear]="isLinear"
+          #stepper
+          style="background-color: lightgray; border-radius: 10px"
+        >
+          <mat-step
+            [stepControl]="firstFormGroup"
+            errorMessage="Name is required."
+          >
             <form [formGroup]="firstFormGroup">
-
-              <mat-form-field *ngIf="filteredTanks$ | async as filteredTanks">
+              <!-- <mat-form-field *ngIf="filteredTanks2$ | async as filteredTanks">
                 <mat-label>Depot Name</mat-label>
                 <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="depotName"
                   [matAutocomplete]="auto" />
@@ -31,66 +35,151 @@
                   <mat-option *ngFor="let option of filteredTanks" [value]="option">
                     {{ option}}
                   </mat-option>
-                </mat-autocomplete>
+                </mat-autocomplete> 
+              </mat-form-field>  -->
+              <mat-form-field>
+                <mat-label>Please select Depot</mat-label>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Number"
+                  matInput
+                  formControlName="depotName"
+                />
               </mat-form-field>
 
-              <!-- <mat-label>Depot Tank</mat-label>
-                 <mat-form-field>
-              <input type="tel" matInput formControlName="depotTank" required />
+              <!-- <mat-form-field *ngIf="filteredTanks3$ | async as filteredTanks3">
+                <mat-label>Depot tank</mat-label>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Number"
+                  matInput
+                  formControlName="depotTank"
+                  [matAutocomplete]="auto3"
+                />
+                <mat-autocomplete
+                  autoActiveFirstOption
+                  #auto3="matAutocomplete"
+                  (optionSelected)="
+                    onTankChange($event.option.value, filteredTanks3)
+                  "
+                >
+                  <mat-option
+                    *ngFor="let option of filteredTanks3"
+                    [value]="option"
+                  >
+                    {{ option }}
+                  </mat-option>
+                </mat-autocomplete>
               </mat-form-field> -->
 
-              <mat-form-field *ngIf="filteredTanks3$ | async as filteredTanks3">
-                <mat-label>Depot tank</mat-label>
-                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="depotTank"
-                  [matAutocomplete]="auto3" />
-                <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete"
-                  (optionSelected)="onTankChange($event.option.value, filteredTanks3)">
-                  <mat-option *ngFor="let option of filteredTanks3" [value]="option">
-                    {{ option}}
+              <mat-form-field *ngIf="filteredTanks$ | async as filteredTanks">
+                <mat-label>Please select Tank</mat-label>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Number"
+                  matInput
+                  formControlName="depotTank"
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete
+                  autoActiveFirstOption
+                  #auto="matAutocomplete"
+                  (optionSelected)="
+                    onTankChange($event.option.value, filteredTanks)
+                  "
+                >
+                  <mat-option
+                    *ngFor="let option of filteredTanks"
+                    [value]="option.tank_label"
+                  >
+                    {{ option?.tank_label }}
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
 
               <mat-form-field *ngIf="filteredTanks1$ | async as filteredTanks1">
                 <mat-label>Destination</mat-label>
-                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="destination"
-                  [matAutocomplete]="auto1" />
-                <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete"
-                  (optionSelected)="onTankChange($event.option.value, filteredTanks1)">
-                  <mat-option *ngFor="let option of filteredTanks1" [value]="option">
-                    {{ option}}
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Number"
+                  matInput
+                  formControlName="destination"
+                  [matAutocomplete]="auto1"
+                />
+                <mat-autocomplete
+                  autoActiveFirstOption
+                  #auto1="matAutocomplete"
+                  (optionSelected)="
+                    onTankChange($event.option.value, filteredTanks1)
+                  "
+                >
+                  <mat-option
+                    *ngFor="let option of filteredTanks1"
+                    [value]="option"
+                  >
+                    {{ option }}
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
 
-
               <div class="stepper-btn">
-                <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+                <button
+                  mat-button
+                  matStepperNext
+                  [disabled]="firstFormGroup.invalid"
+                >
+                  Next
+                </button>
               </div>
             </form>
           </mat-step>
-          <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+          <mat-step
+            [stepControl]="secondFormGroup"
+            errorMessage="Address is required."
+          >
             <form [formGroup]="secondFormGroup">
               <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
               <mat-form-field>
                 <mat-label>Reciept Number</mat-label>
-                <input type="tel" matInput formControlName="reciptNumber" required />
+                <input
+                  type="tel"
+                  matInput
+                  formControlName="reciptNumber"
+                  required
+                />
               </mat-form-field>
 
               <mat-form-field>
-                <mat-label>Meter Ticket Number
-                </mat-label>
-                <input type="tel" matInput required formControlName="meterticketnumberlpdnumber" />
+                <mat-label>Meter Ticket Number </mat-label>
+                <input
+                  type="tel"
+                  matInput
+                  required
+                  formControlName="meterticketnumberlpdnumber"
+                />
               </mat-form-field>
               <mat-form-field>
-                <mat-label>LPD Number
-
-                </mat-label>
-                <input type="tel" matInput required formControlName="lpdNumber" />
+                <mat-label>LPD Number </mat-label>
+                <input
+                  type="tel"
+                  matInput
+                  required
+                  formControlName="lpdNumber"
+                />
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Date</mat-label>
-                <input type="text" matInput formControlName="date" [value]="currentdate | date:'dd/mm/yyyy'" required />
+                <input
+                  type="text"
+                  matInput
+                  formControlName="currentDate"
+
+                  required
+                />
               </mat-form-field>
 
               <!-- <mat-form-field>
@@ -98,10 +187,15 @@
                 <input type="tel" matInput formControlName="depotTank" required />
               </mat-form-field> -->
 
-
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+                <button
+                  mat-button
+                  matStepperNext
+                  [disabled]="secondFormGroup.invalid"
+                >
+                  Next
+                </button>
               </div>
             </form>
           </mat-step>
@@ -110,78 +204,116 @@
             <form [formGroup]="thirdFormGroup">
               <mat-form-field>
                 <mat-label>Truck License Number</mat-label>
-                <input type="tel" matInput formControlName="truckLicenseNumber" required />
+                <input
+                  type="tel"
+                  matInput
+                  formControlName="truckLicenseNumber"
+                  required
+                />
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Truck Driver</mat-label>
-                <input type="tel" matInput required formControlName="truckDriver" />
+                <input
+                  type="tel"
+                  matInput
+                  required
+                  formControlName="truckDriver"
+                />
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Volume Loaded at Depot</mat-label>
-                <input type="tel" matInput formControlName="volumeLoadeatdepot" required />
+                <input
+                  type="tel"
+                  matInput
+                  formControlName="volumeLoadeatdepot"
+                  required
+                />
               </mat-form-field>
               <mat-accordion class="example-headers-align" multi>
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Compartment
-                    </mat-panel-title>
-
+                    <mat-panel-title> Compartment </mat-panel-title>
                   </mat-expansion-panel-header>
 
                   <mat-form-field>
-                    <mat-label>Liquid Height
-                    </mat-label>
-                    <input matInput type="number" formControlName="liquidHeight" required>
+                    <mat-label>Liquid Height </mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="liquidHeight"
+                      required
+                    />
                   </mat-form-field>
 
                   <mat-form-field>
-                    <mat-label>Ullage
-                    </mat-label>
-                    <input matInput type="number" formControlName="ullage" required>
+                    <mat-label>Ullage </mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="ullage"
+                      required
+                    />
                   </mat-form-field>
 
                   <mat-form-field>
-                    <mat-label>Volume
-                    </mat-label>
-                    <input matInput type="number" formControlName="volume" required>
+                    <mat-label>Volume </mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="volume"
+                      required
+                    />
                   </mat-form-field>
-
                 </mat-expansion-panel>
 
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Compartment1
-                    </mat-panel-title>
-
+                    <mat-panel-title> Compartment1 </mat-panel-title>
                   </mat-expansion-panel-header>
 
                   <mat-form-field>
-                    <mat-label>Liquid Height
-                    </mat-label>
-                    <input matInput type="number" formControlName="liquidHeight1" required>
+                    <mat-label>Liquid Height </mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="liquidHeight1"
+                      required
+                    />
                   </mat-form-field>
 
                   <mat-form-field>
-                    <mat-label>Ullage
-                    </mat-label>
-                    <input matInput type="number" formControlName="ullage1" required>
+                    <mat-label>Ullage </mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="ullage1"
+                      required
+                    />
                   </mat-form-field>
 
                   <mat-form-field>
-                    <mat-label>Volume
-                    </mat-label>
-                    <input matInput type="number" formControlName="volume1" required>
+                    <mat-label>Volume </mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="volume1"
+                      required
+                    />
                   </mat-form-field>
                 </mat-expansion-panel>
               </mat-accordion>
 
               <div class="stepper-btn">
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext [disabled]="thirdFormGroup.invalid">Next</button>
+                <button
+                  mat-button
+                  matStepperNext
+                  [disabled]="thirdFormGroup.invalid"
+                >
+                  Next
+                </button>
               </div>
             </form>
           </mat-step>
@@ -209,11 +341,15 @@
             </div>
             <div class="list">
               <span><b>Meter Ticket Number</b></span>
-              <span>{{ secondFormGroup.get("meterticketnumberlpdnumber").value }}</span>
+              <span>{{
+                secondFormGroup.get("meterticketnumberlpdnumber").value
+              }}</span>
             </div>
             <div class="list">
               <span><b>Date</b></span>
-              <span>{{ secondFormGroup.get("date").value | date :'dd/MM/yyyy' }}</span>
+              <span>{{
+                secondFormGroup.get("currentDate").value | date: "dd/MM/yyyy"
+              }}</span>
             </div>
             <!-- <div class="list">
               <span><b>Depot Tank</b></span>
@@ -232,33 +368,27 @@
               <span>{{ thirdFormGroup.get("volumeLoadeatdepot").value }}</span>
             </div>
             <div class="list">
-              <span><b>liquidHeight
-                </b></span>
+              <span><b>liquidHeight </b></span>
               <span>{{ thirdFormGroup.get("liquidHeight")?.value }}</span>
             </div>
             <div class="list">
-              <span><b>ullage
-                </b></span>
+              <span><b>ullage </b></span>
               <span>{{ thirdFormGroup.get("ullage")?.value }}</span>
             </div>
             <div class="list">
-              <span><b>volume
-                </b></span>
+              <span><b>volume </b></span>
               <span>{{ thirdFormGroup.get("volume").value }}</span>
             </div>
             <div class="list">
-              <span><b>liquidHeight1
-                </b></span>
+              <span><b>liquidHeight1 </b></span>
               <span>{{ thirdFormGroup.get("liquidHeight1").value }}</span>
             </div>
             <div class="list">
-              <span><b>ullage1
-                </b></span>
+              <span><b>ullage1 </b></span>
               <span>{{ thirdFormGroup.get("ullage1").value }}</span>
             </div>
             <div class="list">
-              <span><b>volume1
-                </b></span>
+              <span><b>volume1 </b></span>
               <span>{{ thirdFormGroup.get("volume1").value }}</span>
             </div>
             <div style="display: flex">
@@ -272,11 +402,9 @@
                 <button mat-button (click)="saveTruckLoad()">Save</button>
               </div>
             </div>
-
           </mat-step>
         </mat-horizontal-stepper>
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>

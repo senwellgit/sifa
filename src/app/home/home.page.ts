@@ -45,7 +45,7 @@ export class HomePage {
         .login(value.phoneNumber, value.password)
         .then((loggedInDetails: any) => {
           const parsedResponse = JSON.parse(loggedInDetails.data);
-
+          ;
           if (loggedInDetails.status === 200) {
             ApiService.Token = parsedResponse.data.token;
             localStorage.setItem('user', loggedInDetails.data);
@@ -53,10 +53,10 @@ export class HomePage {
             this.apiService.loggedInUserData$.next(loggedInDetails.data);
             this.apiService.getDepotAndTank();
             if (parsedResponse.data.role_name === 'depot_manager') {
-             this.router.navigateByUrl('depotsuser-dashboard');
+              this.router.navigateByUrl('depotsuser-dashboard');
             }
-            if (parsedResponse.data.role_name==="depot_surveyor") {
-             this.router.navigateByUrl('survayer-dashboard');
+            if (parsedResponse.data.role_name === 'depot_surveyor') {
+              this.router.navigateByUrl('survayer-dashboard');
             }
             //   this.router.navigateByUrl('surveyor-dashboard');
             //
@@ -64,7 +64,7 @@ export class HomePage {
             // this.router.navigateByUrl('casualuser-dashboard');
           } else {
             alert(loggedInDetails.message);
-            debugger;
+            ;
           }
         });
     }

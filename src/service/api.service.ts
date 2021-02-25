@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
-import { map, startWith, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  startWith,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 
 import { LoaderProvider } from './loaderProvider';
 import { HTTP } from '@ionic-native/http/ngx';
@@ -10,7 +16,7 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root',
 })
 export class ApiService {
- // canlogin:any;
+  // canlogin:any;
   loggedInUserData$ = new BehaviorSubject(null);
   depot$ = new BehaviorSubject(null);
   tanks$ = new BehaviorSubject([]);
@@ -45,7 +51,6 @@ export class ApiService {
           })
           .pipe(
             map((res: any) => {
-              
               res.data = JSON.stringify(res);
               
               //res.status==200?this.canlogin=true:this.canlogin=false;
@@ -87,26 +92,30 @@ export class ApiService {
               this.loading.showLoader();
               return res;
             }),
+            catchError((e) => {
+              
+              return of(e);
+            }),
             switchMap((res) => {
-              return this.httpClient
+              return JSON.parse(res.data).data.depots[0].id ?  this.httpClient
                 .post(
                   'https://sifa-e-lock.cust.bytenetwork.co.uk/api/get-depot-details',
                   { depot_id: JSON.parse(res.data).data.depots[0].id }
                 )
                 .pipe(
                   map((resTank: any) => {
-                    debugger;
+                    ;
                     resTank.data = JSON.stringify(resTank);
                     this.tanks$.next(JSON.parse(resTank.data).data.tanks);
                     this.loading.hideLoader();
                     resolve(true);
                   })
-                );
+                ) : of(null)
             })
           )
           .subscribe();
       }).then((data) => {
-        debugger;
+        ;
         this.loading.hideLoader();
         console.log('logged');
       });
@@ -175,39 +184,37 @@ export class ApiService {
   }
 
   saveSSTQR(sstqr: any) {
-
     if (!ApiService.isCordova) {
       return new Promise((resolve, rejects) => {
-        this.httpClient.post(
-          'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
+        this.httpClient
+          .post(
+            'https://sifa-e-lock.cust.bytenetwork.co.uk/api/save-surveyor-shoretankquantity-report',
 
-          {
-
-            "tank_id": sstqr.id,
-            "state": 0,
-            "innage_or_ullage_meter_ft": sstqr.innageMetres,
-            "free_water_meter_ft": sstqr.freeWatermetres,
-            "total_observed_cubic_meter": sstqr.totalObservedcubic,
-            "free_water_cubic_meter": sstqr.freeWatercubic,
-            "roof_corr_cubic_meter": sstqr.roofCorrncubic,
-            "gross_observed_cubic_meter": sstqr.grossObservedcubic,
-            "temperature_deg_c": sstqr.tempC,
-            "density": sstqr.densityC,
-            "v_c_f_astm54_b": sstqr.vcfAstm,
-            "gross_standard_cu_meters": sstqr.grossStandardcu,
-            "gross_tonnage_mega_ton": sstqr.grosstonnage
-          }
-
-        ).pipe(
-          map((resTank: any) => {
-
-            resTank.data = JSON.stringify(resTank);
-            resolve(resTank);
-            this.responsedata = resTank.data;
-
-          })
-        ).subscribe();
-      })
+            {
+              tank_id: sstqr.id,
+              state: 0,
+              innage_or_ullage_meter_ft: sstqr.innageMetres,
+              free_water_meter_ft: sstqr.freeWatermetres,
+              total_observed_cubic_meter: sstqr.totalObservedcubic,
+              free_water_cubic_meter: sstqr.freeWatercubic,
+              roof_corr_cubic_meter: sstqr.roofCorrncubic,
+              gross_observed_cubic_meter: sstqr.grossObservedcubic,
+              temperature_deg_c: sstqr.tempC,
+              density: sstqr.densityC,
+              v_c_f_astm54_b: sstqr.vcfAstm,
+              gross_standard_cu_meters: sstqr.grossStandardcu,
+              gross_tonnage_mega_ton: sstqr.grosstonnage,
+            }
+          )
+          .pipe(
+            map((resTank: any) => {
+              resTank.data = JSON.stringify(resTank);
+              resolve(resTank);
+              this.responsedata = resTank.data;
+            })
+          )
+          .subscribe();
+      });
     }
 
     return this.http.post(
@@ -234,12 +241,8 @@ export class ApiService {
     );
   }
 
-  
   saveTruck(truckload: any) {
-
     if (!ApiService.isCordova) {
-
-
     }
   }
 }

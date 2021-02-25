@@ -65,6 +65,7 @@ export class SdrStepperComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.apiService.depot$.subscribe((data) => {
       if (!data) {
         return
